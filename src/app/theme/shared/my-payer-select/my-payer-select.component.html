@@ -1,0 +1,13 @@
+<ng-select [allowClear]="false"
+           [multiple]="false"
+           [active]="selectedPayer"
+           [items]="payersForSelect"
+           [(ngModel)]="selectedPayer"
+           [ngModelOptions]="{standalone: true}"
+           (data)="refreshValue($event)"
+           (selected)="selected($event)"
+           (removed)="removed($event)"
+           (typed)="typed($event)"
+           class="my-payer-select select-control"
+           placeholder="Please select payer">
+</ng-select>

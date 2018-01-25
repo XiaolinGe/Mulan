@@ -57,7 +57,7 @@ button:hover {
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15) !important;
 }
 .button.btn-1 {
-  background-color: #fc6a21;
+  background-color: #c7b299;
 }
 .none {
   display: none;
@@ -277,7 +277,7 @@ header .header-right .right-content .item .minicart #minicart-popup {
   -webkit-transition: all 1s ease 0.2s;
 }
 header .header-right .right-content .item .minicart #minicart-popup .mp-title {
-  background-color: #fc6a21;
+  background-color: #c7b299;
   display: block;
   height: 60px;
   line-height: 60px;
@@ -439,7 +439,7 @@ header .header-right .right-content .item .top-bar-dropdown #currencies a.curren
   color: #252525;
 }
 header .header-right .right-content .item .top-bar-dropdown #currencies li:hover a.currency {
-  color: #fc6a21;
+  color: #c7b299;
 }
 header .header-right .right-content .item .top-bar-dropdown #currencies a img {
   max-width: 17px;
@@ -461,7 +461,7 @@ header .header-right .right-content .item .top-bar-dropdown .cusstom-link .custo
 }
 header .header-right .right-content .item .top-bar-dropdown .cusstom-link .customer-links li:hover a,
 header .header-right .right-content .item .top-bar-dropdown .cusstom-link .customer-links li:hover i {
-  color: #fc6a21;
+  color: #c7b299;
 }
 header nav#main-menu .wrap-main-menu {
   position: relative;
@@ -480,7 +480,7 @@ header nav#main-menu .wrap-main-menu ul li a {
   text-transform: uppercase;
 }
 header nav#main-menu .wrap-main-menu ul li a:hover {
-  color: #fc6a21;
+  color: #c7b299;
 }
 header nav#main-menu .wrap-main-menu ul li.custom-block {
   position: absolute;
@@ -774,7 +774,7 @@ section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-o
   position: absolute;
   opacity: 0;
   visibility: hidden;
-  background: #fc6a21;
+  background: #c7b299;
   font-size: 12px;
   min-width: 100px;
   color: #fff;
@@ -861,8 +861,8 @@ section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-o
 												    font-size: 14px;
 											    }
 											    &:hover {
-											    	background: #fc6a21;
-							    					border-color: #fc6a21;
+											    	background: #c7b299;
+							    					border-color: #c7b299;
 							    					*,&:before {
 							    						color: #fff;
 							    					}
@@ -937,7 +937,7 @@ section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-o
   font-size: 14px;
 }
 section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-outer .owl-stage .owl-item .product-item .bottom-product-item .product-name a:hover {
-  color: #fc6a21;
+  color: #c7b299;
 }
 section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-outer .owl-stage .owl-item .product-item .bottom-product-item .price-box .price {
   font-family: Roboto;
@@ -966,7 +966,7 @@ section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-o
 }
 section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-outer .owl-stage .owl-item .product-item:hover .addto-wishlist:hover {
   cursor: pointer;
-  border-color: #fc6a21;
+  border-color: #c7b299;
 }
 section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-outer .owl-stage .owl-item .product-item:hover .addto-wishlist:hover .tooltip {
   visibility: visible;
@@ -976,18 +976,18 @@ section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-o
 }
 section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-outer .owl-stage .owl-item .product-item:hover .addto-wishlist:hover .tooltip:before {
   content: '';
-  border-left-color: #fc6a21;
+  border-left-color: #c7b299;
   width: 0;
   height: 0;
   border-top: 3px solid transparent;
   border-bottom: 3px solid transparent;
-  border-left: 3px solid #fc6a21;
+  border-left: 3px solid #c7b299;
   position: absolute;
   right: -3px;
   top: 8px;
 }
 section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-outer .owl-stage .owl-item .product-item:hover .addto-wishlist:hover * {
-  color: #fc6a21;
+  color: #c7b299;
 }
 section.main-content .carousel-product .products-grid #owl-arrivals .owl-stage-outer .owl-stage .owl-item .product-item:hover .product-hover-button {
   display: -webkit-box;
@@ -1053,6 +1053,6 @@ footer .main-footer .footer-copyright .right a {
   color: #c2c2c2;
 }
 footer .main-footer .footer-copyright .right a:hover {
-  color: #fc6a21;
+  color: #c7b299;
 }
 /* End footer */

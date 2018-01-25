@@ -1,0 +1,42 @@
+
+html {
+  width: 100%;
+}
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+header {
+  nav#main-menu {
+    padding-top: 0 !important;
+    z-index: 100;
+    width: 100%;
+    .wrap-main-menu {
+      padding: 25px;
+      ul {
+        li {
+          a {
+            font-size: 20px;
+            vertical-align: text-top;
+          }
+          a.logo {
+            font-size: 62px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+body.category-page {
+  .wrap-main-slide {
+    .main-slide {
+      .carousel-inner {
+        .main-slide-content {
+        }
+      }
+    }
+  }
+}

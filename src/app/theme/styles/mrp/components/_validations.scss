@@ -1,0 +1,23 @@
+.help-block div{
+  color: $theme-orange;
+  margin-bottm: unset !important;;
+}
+
+/*============= validation  ============*/
+label.error {
+  color: $theme-orange;
+}
+
+#bookDealForm .help-block{
+  position: relative;
+    left: 63%;
+  }
+
+#createOrderForm {
+  label[class='error'][id^='validDate'],
+  label[class='error'][id^='validTime'] {
+    top: $input-height + 2px;
+    left: 0;
+  }
+}
+

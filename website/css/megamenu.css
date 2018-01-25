@@ -96,7 +96,7 @@
   font-family: Roboto;
 }
 .menu-mobile.wrap-sidebar-menu_mobile nav#sidebar-menu .block-title {
-  background-color: #fc6a21;
+  background-color: #c7b299;
   color: #666666;
   padding: 3px 15px;
 }
@@ -130,7 +130,7 @@
   border-bottom: 1px solid #dfdfdf;
 }
 .menu-mobile.wrap-sidebar-menu_mobile nav#sidebar-menu > ul > li a:hover {
-  color: #fc6a21;
+  color: #c7b299;
 }
 .menu-mobile.wrap-sidebar-menu_mobile nav#sidebar-menu > ul > li > a {
   display: block;
@@ -167,7 +167,7 @@
   color: #666666;
 }
 .menu-mobile.wrap-sidebar-menu_mobile nav#sidebar-menu > ul > li ul.mega-menu-sub li.level1 .mega-menu-container ul.groupdrop-link li a:hover {
-  color: #fc6a21;
+  color: #c7b299;
 }
 .menu-mobile.wrap-sidebar-menu_mobile nav#sidebar-menu > ul > li ul.mega-menu-sub li.level1 .mega-menu-image.style-1 {
   position: absolute;

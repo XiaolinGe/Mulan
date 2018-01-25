@@ -1,0 +1,118 @@
+
+<div [formGroup]="bankAccountForm">
+  <div class="bank-account-place" id="bank-account-place-init">
+    <br>
+    <div class="row">
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+        <label for="currency">Currency</label>
+        <select id="currency" name="currency" class="select-control" formControlName="currency" required>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+        <div class="help-block" *ngIf="bankAccountForm.get('currency').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('currency').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('currency').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="country">Country</label>
+        <select id="country" name="country" class="select-control" formControlName="country" required>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+        <div class="help-block" *ngIf="bankAccountForm.get('country').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('country').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('country').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="accountName">Account name</label>
+        <input formControlName="accountName" type="text" id="accountName" name="accountName"  required>
+        <div class="help-block" *ngIf="bankAccountForm.get('accountName').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('accountName').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('accountName').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="accountNumber">Account number</label>
+        <input formControlName="accountNumber" id="accountNumber" name="accountNumber" required>
+        <div class="help-block" *ngIf="bankAccountForm.get('accountNumber').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('accountNumber').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('accountNumber').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+
+        <label for="bankName">Bank Name</label>
+        <input formControlName="bankName" type="text" id="bankName" name="bankName">
+        <div class="help-block" *ngIf="bankAccountForm.get('bankName').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('bankName').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('bankName').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-if="addData.bankSelected.clearingCodeType">
+        <label for="bankBranch">Branch Name</label>
+        <input formControlName="bankBranch" type="text" id="bankBranch" name="bankBranch">
+        <div class="help-block" *ngIf="bankAccountForm.get('bankBranch').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('bankBranch').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('bankBranch').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="bankCodeType">Bank Code Type</label>
+        <input formControlName="bankCodeType" type="text" id="bankCodeType" name="bankCodeType" required>
+        <input formControlName="bankCode" type="text" id="bankCode" name="bankCode" required>
+        <div class="help-block" *ngIf="bankAccountForm.get('bankCode').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('bankCode').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('bankCode').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-if="addData.bankSelected.needSwiftCode">
+        <label for="swift-code">Swift Code </label>
+        <input formControlName="swiftCode" type="text" id="swift-code" name="swiftCode" required>
+        <div class="help-block" *ngIf="bankAccountForm.get('swiftCode').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('swiftCode').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('swiftCode').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="bankCodeType">Branch address</label>
+        <input formControlName="branchAddress" type="text" id="branchAddress" name="branchAddress" required>
+        <div class="help-block" *ngIf="bankAccountForm.get('branchAddress').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('branchAddress').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('branchAddress').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="swift-code">Beneficiary address</label>
+        <input formControlName="beneficiaryAddress" type="text" id="swift-code" name="swiftCode" required>
+        <div class="help-block" *ngIf="bankAccountForm.get('beneficiaryAddress').touched">
+          <span class="text-danger" *ngIf="bankAccountForm.get('beneficiaryAddress').hasError('required')">Field is required</span>
+          <span class="text-danger" *ngIf="bankAccountForm.get('beneficiaryAddress').hasError('minlength')">Minimum of 3 characters</span>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row">
+      <div class="col-lg-6 col-md-6  col-sm-6 form-group remove-control-container remove-bank-account-control-container" ng-click="Ctrl.del(addData)">
+        <span class="remove-control remove-exist-bank-account-control" ng-show="Ctrl.addDatas.length > 1">- REMOVE THIS BANK ACCOUNT</span>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="add-control add-bank-account-control theme-color fr" ng-click="Ctrl.add()" id="add-bank-account-control">+ ADD BANK ACCOUNT
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

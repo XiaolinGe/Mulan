@@ -1,0 +1,9 @@
+.help-block{
+    color: $theme-color;
+}
+
+
+// override disable input
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
+    background-color: $white;
+}

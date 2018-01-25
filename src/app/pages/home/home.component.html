@@ -1,0 +1,309 @@
+<div class="container-fluid common-container">
+  <div class="row rate-converter-row common-section">
+
+    <!--<button class="btn btn-prim" ng-click="connect()"> Connect</button>-->
+    <!--<button class="btn btn-prim" ng-click="disconnect()"> Disconnect</button>-->
+
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h3 class="theme-color" style="margin-bottom: 50px; " (click)="print()">Hi {{user?.username}}</h3>
+      <h4 class="title theme-color">Realtime currency converter</h4>
+      <hr class="title-bottom-line">
+
+      <div class="" *ngIf="currentRatePair && !currentRatePair.isCurrencyReversed">
+        <span>1</span>&nbsp;<span class="ng-binding">{{currentRatePair.buyCurrency}}</span>
+        =
+        <span class="ng-binding">{{currentRatePair.buyPrice}}</span>
+        &nbsp;
+        <span class="ng-binding">{{currentRatePair.sellCurrency}}</span>
+        &nbsp;
+        <span>( buy rate )</span>
+      </div>
+
+      <div class=" ng-scope" *ngIf="currentRatePair && currentRatePair.isCurrencyReversed">
+        <span>1</span>&nbsp;<span class="ng-binding">{{currentRatePair.buyCurrency}}</span>
+        =
+        <span class="ng-binding">{{currentRatePair.sellPrice}}</span>
+        &nbsp;
+        <span class="ng-binding">{{currentRatePair.sellCurrency}}</span>
+        &nbsp;
+        <span>( sell rate )</span>
+      </div>
+
+
+      <div class="" *ngIf="!currentRatePair">
+        <span>Please select the currency you want to buy.</span>
+      </div>
+
+      <br>
+      <br>
+
+      <form class="common-form" [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm.value)"
+            id="bookDealForm">
+        <div class="row converter-row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group buy-currency-item">
+            <label for="selectedBuyCurrency">You want to buy / amount</label>
+            <br>
+            <select id="selectedBuyCurrency"
+                    name="selectedBuyCurrency"
+                    formControlName="selectedBuyCurrency"
+                    [(ngModel)]="selectedBuyCurrency"
+                    (change)="onBuyCurrencyChanged()"
+                    class="select-control converter-select"
+                    required>
+              <option value="">Please Select</option>
+              <option *ngFor="let o of buyCurrencyOptions" [ngValue]="o">{{o}}</option>
+            </select>
+
+
+            <input type="number"
+                   id="selectedBuyAmount"
+                   name="selectedBuyAmount"
+                   class="float-right converter-input"
+                   (change)="onBuyAmountChanged($event)"
+                   (click)="onBuyAmountClick()"
+                   [(ngModel)]="selectedBuyAmount"
+                   formControlName="selectedBuyAmount"
+                   required>
+            <div class="help-block" *ngIf="myForm.get('selectedBuyAmount').touched">
+              <span class="text-danger" *ngIf="myForm.get('selectedBuyAmount').hasError('required')">Field is required</span>
+            </div>
+          </div>
+
+          <i class="fa fa-exchange theme-color exchange-icon" aria-hidden="true"></i>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+            <label for="sellCurrencyBasic">You want to sell / amount</label>
+            <br>
+            <select id="sellCurrencyBasic"
+                    name="sellCurrencyBasic"
+                    formControlName="selectedSellCurrency"
+                    (change)="onSellCurrencyChanged()"
+                    [(ngModel)]="selectedSellCurrency"
+                    class="select-control converter-select">
+              <option value="">Please Select</option>
+              <option *ngFor="let o of sellCurrencyOptions" [ngValue]="o">{{o}}</option>
+            </select>
+            <input type="number"
+                   id="selectedSellAmount"
+                   formControlName="selectedSellAmount"
+                   name="selectedSellAmount"
+                   class="float-right converter-input"
+                   (change)="onSellAmountChanged()"
+                   (click)="onSellAmountClick()"
+                   [(ngModel)]="selectedSellAmount"
+                   required>
+            <div class="help-block" *ngIf="myForm.get('selectedSellAmount').touched">
+              <span class="text-danger" *ngIf="myForm.get('selectedBuyAmount').hasError('required')">Field is required</span>
+            </div>
+          </div>
+
+        </div>
+        <p style="color: red;">Currently we only offer pricing from 8 am - 10 pm on workdays (NZ time).</p>
+        <div class="row">
+          <div class="col-lg-2 col-md-2  col-sm-12  form-group form-buttons">
+            <button [disabled]="myForm.invalid || !canTrade"
+                    type="button"
+                    class="btn pull-right"
+                    data-toggle="modal"
+                    (click)="spotDealModal.open()"
+                    id="spot-deal-confirm-btn">
+              SUBMIT
+            </button>
+          </div>
+          <div class="col-lg-10 col-md-10  col-sm-12"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="row rate-list-row common-section">
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h4 class="title theme-color">EXCHANGE RATE</h4>
+      <hr class="title-bottom-line">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a (click)="addFxRateModal.open()" class="panel-add sm-add-button"><span class="add-icon">+&nbsp;</span>ADD RATE</a>
+        </div>
+        <div class="panel-body">
+
+          <div class="table-responsive spot-table-container spot-list-table-container customer-rate-table" id="no-more-tables">
+            <table class="table spot-table  table-hover">
+              <thead>
+              <tr>
+                <th class="rate-list-table-th1" data-field="">CURRENCY</th>
+                <th class="rate-list-table-th3" data-field="">BUY RATE</th>
+                <th class="rate-list-table-th4" data-field="">SELL RATE</th>
+                <th class="rate-list-table-th4" data-field="">DELETE</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <tr *ngFor="let rate of customerRatePairs" class="spot-deal spot-edit clickable">
+                <td data-title="CURRENCY">{{rate.buyCurrency}}/{{rate.sellCurrency}}</td>
+                <td data-title="BUY RATE">{{rate.buyPrice}}</td>
+                <td data-title="SELL RATE">{{rate.sellPrice}}</td>
+                <td data-title="DELETE"><i
+                  class="glyphicon glyphicon-remove theme-orange delete-icon deleteRate"
+                  (click)="confirmDelete(rate)"></i>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<modal #spotDealModal modalClass="modal-lg">
+  <modal-header>
+    <h4>SPOT DEAL</h4>
+  </modal-header>
+  <modal-content>
+    <div class="common-form">
+      <div class="form-group form-buttons">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+              <!--<label for="rate">Rate</label>-->
+              <br/>
+              <div class="" *ngIf="currentRatePair && !currentRatePair.isCurrencyReversed">
+                <span>1</span>&nbsp;<span class="ng-binding">{{currentRatePair.buyCurrency}}</span>
+                =
+                <span class="ng-binding">{{currentRatePair.buyPrice}}</span>
+                &nbsp;
+                <span class="ng-binding">{{currentRatePair.sellCurrency}}</span>
+                &nbsp;
+                <span>( buy rate )</span>
+              </div>
+
+              <div class="" *ngIf="currentRatePair && currentRatePair.isCurrencyReversed">
+                <span>1</span>&nbsp;<span class="ng-binding">{{currentRatePair.buyCurrency}}</span>
+                =
+                <span class="ng-binding">{{currentRatePair.sellPrice}}</span>
+                &nbsp;
+                <span class="ng-binding">{{currentRatePair.sellCurrency}}</span>
+                &nbsp;
+                <span>( sell rate )</span>
+              </div>
+
+              <!-- <input type="text" id="rate" name="rate" readonly=""> -->
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group buy-currency-item">
+              <label for="buyCurrency">Bought currency</label>
+              <input [(ngModel)]="selectedBuyCurrency" type="text" id="buyCurrency" name="buyCurrency" readonly="">
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+              <label for="buyAmount">Amount</label>
+              <input type="text" id="buyAmount" name="buyAmount" [(ngModel)]="selectedBuyAmount"
+                     readonly="">
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+              <label for="sellCurrency">Sold currency</label>
+              <input [(ngModel)]="selectedSellCurrency" type="text" id="sellCurrency" name="sellCurrency"
+                     readonly="">
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+              <label for="sellAmount">Amount</label>
+              <input type="text" id="sellAmount" name="sellAmount" [(ngModel)]="selectedSellAmount"
+                     readonly="">
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+          </div>
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12"><p style="color: red;"></p></div>
+          </div>
+
+        </div>
+        <div class="modal-buttons">
+          <button type="button"  (click)="spotDealModal.close()" class="btn gray-btn" data-dismiss="modal">CLOSE</button>
+          <button class="btn" [disabled]="!enableAcceptBtn"  (click)="createTrx()">ACCEPT</button>
+        </div>
+      </div>
+    </div>
+  </modal-content>
+</modal>
+
+
+
+<modal #addFxRateModal>
+  <modal-header>
+    <h4>ADD FX RATE</h4>
+  </modal-header>
+  <modal-content>
+    <div class="container-fluid common-container add-fx-modal">
+      <div class="row add-rate-row common-section">
+
+        <div class="col-md-12 col-sm-12">
+          <!--<h4 class="title theme-color">ADD FX RATE</h4>-->
+          <!--<hr class="title-bottom-line">-->
+          <form name="addFxRateForm" [formGroup]="addFxRateForm" (ngSubmit)="onAddFxRateFormSubmit(addFxRateForm)" class="common-form" novalidate>
+
+            <div class="row form-row add-rate-form-row">
+              <div class="col-lg-12 col-md-12  col-sm-12 form-group form-select-group">
+                <label for="currencyPair">Currency Pair</label>
+                <select id="currencyPair" formControlName="cutomerCurrencyPair" [(ngModel)]="cutomerCurrencyPair" name="currencyPair" class="select-control" required>
+                  <option value="">Please Select</option>
+                  <option *ngFor="let c of cutomerCurrencyPairOptions" [ngValue]="c">{{c.buyCurrency}} / {{c.sellCurrency}}</option>
+                </select>
+              </div>
+              <div class="col-md-12 col-sm-12 form-group form-buttons modal-buttons">
+                <a type="button" (click)="addFxRateModal.close()"  class="btn theme-btn">Cancel</a>
+                <button [disabled]="addFxRateForm.invalid" type="submit" class="btn theme-btn">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </modal-content>
+</modal>
+
+
+<modal #confirmDeleteModal modalClass="modal-sm">
+  <modal-header>
+    <h4>Warning</h4>
+  </modal-header>
+  <modal-content>
+    <div class="">
+      <div class="row add-rate-row common-section">
+
+        <div class="col-md-12 col-sm-12">
+          <h4>Are you sure to delete rate pair?</h4>
+          <!--<hr class="title-bottom-line">-->
+          <form name="addFxRateForm" [formGroup]="addFxRateForm" (ngSubmit)="onAddFxRateFormSubmit(addFxRateForm)" class="common-form" novalidate>
+
+            <div class="row form-row add-rate-form-row">
+              <div class="col-md-6 col-sm-6 form-group form-buttons modal-buttons">
+                <button (click)="removeCustomerRate()" type="button" class="btn theme-btn">Yes</button>
+              </div>
+
+              <div class="col-md-6 col-sm-6 form-group form-buttons modal-buttons">
+                <a type="button" (click)="confirmDeleteModal.close()" class="btn theme-btn">No</a>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </modal-content>
+</modal>

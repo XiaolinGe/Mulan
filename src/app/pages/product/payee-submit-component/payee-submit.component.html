@@ -1,0 +1,110 @@
+<div [formGroup]="payeeSubForm">
+  <ngx-loading [show]="payeeLoading"></ngx-loading>
+
+  <div class="payee-place">
+
+    <div name="payeeSubForm">
+
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 form-group form-select-group">
+          <label for="payeeName">Payee name
+            <span *ngIf="payees?.length > 0">({{payees?.length}} available)</span>
+            <span *ngIf="!(payees?.length > 0)">(0 available)</span>
+          </label>
+          <!--<select id="payeeName" ng-model="toAddPayee.id" name="payeeName"-->
+                  <!--ng-change="Ctrl.onPayeeChanged(toAddPayee, toAddPayee.id)"-->
+                  <!--class="select-control converter-select"-->
+                  <!--ng-options="o.id as o.name for o in toAddPayer.payer.payees">-->
+          <!--</select>-->
+          <select id="payeeName"
+                  formControlName="id"
+                  [(ngModel)]="payee.id"
+                  (ngModelChange)="onPayeeChange($event)"
+                  name="payeeName"
+                  class="select-control converter-select">
+            <option value="">Please Select</option>
+            <option *ngFor="let payee of payees" value="{{payee.id}}">{{payee.name}}</option>
+          </select>
+          <validation-error [control]="payeeSubForm.get('id')"></validation-error>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 form-group form-select-group">
+          <label for="bankAccount">Bank account &nbsp;
+            <span *ngIf="bankAccounts?.length > 0">({{bankAccounts?.length}} available)</span>
+            <span *ngIf="!(bankAccounts?.length > 0)">(0 available)</span>
+          </label>
+          <select id="bankAccount"
+                  formControlName="payeeBankAccountId"
+                  [(ngModel)]="payee.payeeBankAccountId"
+                  (ngModelChange)="onBankAccountChange($event)"
+                  name="bankAccount"
+                  class="select-control converter-select">
+            <option value="">Please Select</option>
+            <option *ngFor="let d of bankAccounts" [value]="d.id">{{d.accountNumber? d.accountNumber : d.clearingCode}} <span *ngIf="d.swiftCode">(swiftCode: {{d.swiftCode}} )</span></option>
+          </select>
+          <validation-error [control]="payeeSubForm.get('payeeBankAccountId')"></validation-error>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 form-group form-select-group">
+          <label for="payAmount">Pay amount</label>
+          <input type="number"
+                 [readonly]="!canEditAmount"
+                 formControlName="payAmount"
+                 [(ngModel)]="payee.payAmount"
+                 id="payAmount"
+                 name="payAmount1">
+          <validation-error [control]="payeeSubForm.get('payAmount')"></validation-error>
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10 form-group">
+          <label for="paymentReason">Reason</label>
+          <input type="text"
+                 formControlName="paymentReason"
+                 [(ngModel)]="payee.paymentReason"
+                 id="paymentReason"
+                 name="paymentReason">
+          <div class="help-block" ng-messages="payeeSubForm.paymentReason.$error"
+               ng-show="payeeSubForm.paymentReason.$touched">
+            <div ng-messages-include="src/templates/messages.html"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10 ">
+           <!--<input type="text"-->
+                 <!--formControlName="sameday"-->
+                 <!--[(ngModel)]="payee.sameday"-->
+                 <!--id="sameday"-->
+                 <!--name="sameday">-->
+          <div class="checkbox-inline form-group">
+            <label style="font-size: 25px;">
+              <input type="checkbox"
+                   formControlName="sameday"
+                   [(ngModel)]="payee.sameday"
+                   id="sameday"
+                   name="sameday">
+            &nbsp;Same Day</label>
+            <p style="color:red;">Please note same day payment will cost $25 bank fee</p>
+          </div>
+
+
+          <div class="help-block" ng-messages="payeeSubForm.sameday.$error"
+               ng-show="payeeSubForm.sameday.$touched">
+            <div ng-messages-include="src/templates/messages.html"></div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+

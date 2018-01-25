@@ -1,0 +1,26 @@
+
+.btn-prim{
+    color: $white;
+    background-color: $theme-color;
+    border-color: $theme-color;
+    width: 100px;
+}
+
+.btn-success, .btn-success[disabled]:hover{
+    background-color:#545fdf;
+    border-color:#545fdf;
+}
+
+.file-input{
+    width: 250px !important;
+    border-radius:1; 
+    margin-top:20px;
+    margin-right: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+.btn-cancel{
+    background: grey !important;
+    border-color: grey !important;
+}

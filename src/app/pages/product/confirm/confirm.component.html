@@ -1,0 +1,92 @@
+<div class="container-fluid common-container" cg-busy="Ctrl.myPromise">
+  <div class="row add-rate-row common-section">
+
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h4 class="title theme-color">DEAL CONFIRMED</h4>
+      <hr class="title-bottom-line">
+
+      <form action="" method="post" class="common-form">
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <label for="bookedAte">Created on</label>
+            <input type="text" id="bookedAte" name="" readonly="" value="{{trx?.bookedAt * 1000 | date}}">
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <label>Rate</label>
+            <div>
+              <span>{{trx?.rate }}</span>&nbsp;
+            </div>
+          </div>
+
+
+          <!--<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group" ng-if="trx?.reversed">-->
+          <!--<label for="rate">Bought rate</label>-->
+          <!--<div>-->
+          <!--<span>1</span>&nbsp;-->
+          <!--<span>{{trx?.buyCurrency}}</span> = -->
+          <!--<span>{{trx?.rate | number : 4 }}</span>&nbsp;-->
+          <!--<span>{{trx?.sellCurrency}}</span>-->
+          <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group" ng-if="!trx?.reversed">-->
+          <!--<label for="rate">Bought rate</label>-->
+          <!--<div>-->
+          <!--<span>1</span>&nbsp;-->
+          <!--<span>{{trx?.sellCurrency}}</span> =-->
+          <!--<span>{{trx?.rate | number : 4 }}</span>&nbsp;-->
+          <!--<span>{{trx?.buyCurrency}}</span>-->
+          <!--</div>-->
+          <!--</div>-->
+
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group buy-currency-item">
+            <label for="buyCurrency">Bought currency</label>
+            <input type="text" id="buyCurrency" name="" readonly="" value="{{trx?.buyCurrency}}">
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <label for="buyAmount">Amount</label>
+            <input type="text" id="buyAmount" name="" readonly="" value="{{trx?.buyAmount}}">
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+            <label for="sellCurrency">Sold currency</label>
+            <input type="text" id="sellCurrency" name="" readonly="" value="{{trx?.sellCurrency}}">
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <label for="sellAmount">Amount</label>
+            <input type="text" id="sellAmount" name="" readonly="" value="{{trx?.sellAmount}}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12  col-sm-12  form-group form-buttons">
+            <a routerLink="/pages/trx/edit/{{trx?.id}}"  class="btn minor-btn pull-right">NEXT</a>
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

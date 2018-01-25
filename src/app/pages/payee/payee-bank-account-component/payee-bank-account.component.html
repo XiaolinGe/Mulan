@@ -1,0 +1,103 @@
+<div [formGroup]="payeeBankAccountForm">
+  <div class="bank-account-place" id="bank-account-place-init">
+    <br>
+    <div class="row">
+      <input type="text"
+             style="display: none"
+             formControlName="id"
+             [(ngModel)]="bankAccount.id">
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+        <label for="currency">Currency</label>
+        <select id="currency"
+                name="currency"
+                class="select-control"
+                formControlName="currency"
+                [(ngModel)]="bankAccount.currency"
+                (ngModelChange)="onCurrencyChange($event)">
+          <option value="">Please Select</option>
+          <option *ngFor="let c of uniqueCodes" value="{{c.currency}}">{{c.currency}}</option>
+        </select>
+        <validation-error [control]="payeeBankAccountForm.get('currency')"></validation-error>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="country">Country</label>
+        <select id="country"
+                name="country"
+                class="select-control"
+                formControlName="accountCountry"
+                [(ngModel)]="bankAccount.accountCountry"
+                (ngModelChange)="onAccountCountryChange($event)">
+          <option value="">Please Select</option>
+          <option *ngFor="let c of countries" value="{{c}}">{{c}}</option>
+        </select>
+        <validation-error [control]="payeeBankAccountForm.get('accountCountry')"></validation-error>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="accountName">Account name</label>
+        <input formControlName="accountName"
+               [(ngModel)]="bankAccount.accountName"
+               type="text" id="accountName"
+               name="accountName">
+        <validation-error [control]="payeeBankAccountForm.get('accountName')"></validation-error>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" *ngIf="selectedCode?.needAccountNo">
+        <label for="accountNumber">Account number</label>
+        <input  style="display: none;" type="text" formControlName="needAccountNo" [ngModel]="selectedCode.needAccountNo" readonly disabled>
+        <input formControlName="accountNumber"
+               [(ngModel)]="bankAccount.accountNumber"
+               id="accountNumber"
+               name="accountNumber">
+        <validation-error [control]="payeeBankAccountForm.get('accountNumber')"></validation-error>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+
+        <label for="bankName">Bank Name</label>
+        <input formControlName="bankName"
+               [(ngModel)]="bankAccount.bankName"
+               type="text"
+               id="bankName"
+               name="bankName">
+        <validation-error [control]="payeeBankAccountForm.get('bankName')"></validation-error>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" *ngIf="selectedCode?.clearingCodeType">
+        <label for="clearingCode">{{selectedCode?.clearingCodeType}}</label>
+        <input style="display: none;"  type="text" formControlName="clearingCodeType" [(ngModel)]="selectedCode.clearingCodeType" readonly disabled>
+        <input formControlName="clearingCode"
+               type="text"
+               id="clearingCode"
+               name="clearingCode">
+        <validation-error [control]="payeeBankAccountForm.get('clearingCode')"></validation-error>
+      </div>
+
+    </div>
+    <div class="row">
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+        <label for="bankBranch">Branch Name</label>
+        <input formControlName="branchName"
+               [(ngModel)]="bankAccount.branchName"
+               type="text" id="bankBranch"
+               name="bankBranch">
+        <validation-error [control]="payeeBankAccountForm.get('branchName')"></validation-error>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" *ngIf="selectedCode?.needSwiftCode">
+        <label for="swiftCode">Swift Code</label>
+        <input style="display: none;" type="text" formControlName="needSwiftCode" [(ngModel)]="selectedCode.needSwiftCode" readonly disabled>
+        <input formControlName="swiftCode"
+               [(ngModel)]="bankAccount.swiftCode"
+               type="text" id="swiftCode"
+               name="swiftCode">
+        <validation-error [control]="payeeBankAccountForm.get('swiftCode')"></validation-error>
+      </div>
+    </div>
+
+  </div>
+</div>

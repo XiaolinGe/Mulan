@@ -67,3 +67,23 @@ body.category-page {
     }
   }
 }
+
+header nav#main-menu .wrap-main-menu ul li a:hover {
+  color: #c7b299 !important;
+}
+
+section.main-content .wrap-main-slide .main-slide .wrap-control .nav-control {
+  background: transparent;
+}
+
+section.main-content .wrap-main-slide .main-slide #carousel-main-slide .carousel-inner .main-slide-content .caption-slide a.img-container {
+  background: transparent;
+  padding: 0;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 2px;
+  display: block;
+  margin-top: 0;
+
+}

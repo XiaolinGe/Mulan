@@ -1,0 +1,67 @@
+<div [formGroup]="payerForm" class="payerForm">
+  <div name="payerSubForm">
+    <div class="row">
+      <ngx-loading [show]="payerLoading"></ngx-loading>
+
+      <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group">
+        <label for="payerName">Payer name
+          <span *ngIf="payers?.length > 0">({{payers?.length}} available)</span>
+          <span *ngIf="!(payers?.length > 0)">(0 available)</span>
+        </label>
+        <!--<select id="payerName" ng-model="toAddPayer.payer.id"-->
+        <!--class="select-control converter-select" name="" class="select-control"-->
+        <!--ng-change="Ctrl.onPayerChanged(toAddPayer.payer.id, toAddPayer)"-->
+        <!--ng-options="p.id as p.name for p in Ctrl.payers">-->
+        <!--</select>-->
+        <input type="text"
+               formControlName="id"
+               [(ngModel)]="payerId"
+               style="display: none">
+
+        <!--<select id="id"-->
+        <!--formControlName="id"-->
+        <!--[(ngModel)]="payerId"-->
+        <!--(change)="onPayerChange()"-->
+        <!--name="id"-->
+        <!--class="select-control converter-select">-->
+        <!--<option value="">Please Select</option>-->
+        <!--<option *ngFor="let payer of payers" [ngValue]="payer.id">{{payer.name}}</option>-->
+        <!--</select>-->
+
+        <my-payer-select (payerSelected)="myPayerSelected($event)" [payerForLoad]="payer"></my-payer-select>
+
+        <div class="help-block" *ngIf="payerForm.get('id').touched">
+          <span class="text-danger" *ngIf="payerForm.get('id').hasError('required')">Field is required</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div formArrayName="payees" id="payees">
+      <div *ngFor="let payeeForm of getPayeeFormData().controls; let i=index" class="panel panel-default">
+        <div class="panel-body" [formGroupName]="i">
+
+          <payee-submit-component [group]="getPayeeFormData().controls[i]" [payer]="payer" [subject]="payerSubject"
+                                  [trx]="trx" [payee]="getPayee(i)"></payee-submit-component>
+
+        </div>
+
+        <div class="payee-target"></div>
+        <div class="row add-payee-control-container" *ngIf="changeability.dividable">
+          <div class="col-lg-6 col-md-6  col-sm-6 form-group">
+            <a class="sm-remove-button add-payee-control pull-left" *ngIf="i > 0" (click)="removePayeeFormControl(i)">-
+              Remove this payee</a>
+          </div>
+
+          <div class="col-lg-6 col-md-6  col-sm-6 form-group">
+            <a class="sm-add-button add-payee-control pull-right" (click)="addPayeeFormControl()">+ Add another
+              payee</a>
+          </div>
+        </div>
+        <div *ngIf="i < getPayeeFormData().controls.length - 1" class="divide"></div>
+      </div>
+      <br>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,263 @@
+<div class="container-fluid common-container deal-confirm-container" cg-busy="myPromise">
+  <div class="row add-rate-row common-section">
+
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h4 class="title theme-color">DEAL CONFIRMED</h4>
+      <hr class="title-bottom-line">
+
+      <form action="" method="post" class="common-form" id="dealConfirm">
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Order ID</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" name="" readonly value="{{trx?.orderId}}">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Original Order ID</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" id="rate" readonly="" name="" value="{{trx?.orderId}}">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Created on</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" name="" readonly="" value="{{trx?.bookedAt  * 1000 | date}}">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Rate</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" id="rate" readonly="" name="" value="{{trx?.rate}}">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Bought currency</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" id="buyCurrency" name="" readonly="" value="{{trx?.buyCurrency}}">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Amount</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" id="buyAmount" name="" readonly="" value="{{trx?.buyAmount}}">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group  ">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Sold currency</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" id="sellCurrency" name="" readonly="" value="{{trx?.sellCurrency}}">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Amount</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" id="sellAmount" name="" readonly="" value="{{trx?.sellAmount}}">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group" *ngIf="trx?.overnightRate && trx?.overnightRate > 0">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Overnight Rate</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" id="overnightRate" name="" readonly="" value="{{trx?.overnightRate }}">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group" *ngIf="trx?.serviceFee && trx?.serviceFee > 0">
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                <label>Service Fee</label>
+              </div>
+              <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                <input type="text" id="serviceFee" name="" readonly="" value="{{trx?.serviceFee }}">
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div *ngFor="let child of trx?.children">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+              <h5 class="title theme-color">PAYER</h5>
+              <hr class="title-bottom-line">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+              <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                  <label>Payer name</label>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                  <input type="text" id="payerName" name="" readonly="" value="{{child.payer.name}}">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group"></div>
+          </div>
+
+
+          <div *ngFor="let payee of child.payees">
+            <hr class="hr-gray">
+
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group  ">
+                <div class="row">
+                  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                    <label>Payee name</label>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                    <input type="text" name="" readonly="" value="{{payee.name}}">
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div> -->
+
+
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                <div class="row">
+                  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                    <label>Bank account</label>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                    <input type="text" id="bankAmount" name="" readonly="" value="{{payee.payeeBankAccount?.clearingCode + payee.payeeBankAccount?.accountNumber}}">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                <div class="row">
+                  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                    <label>Pay amount</label>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                    <input type="text" id="payAmount" name="" readonly="" value="{{payee.payAmount}}">
+                  </div>
+                </div>
+              </div>
+
+              <!--<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>-->
+
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                <div class="row">
+                  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                    <label>Reason</label>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                    <input type="text" id="bankAmount" name="" readonly="" value="{{payee.paymentReason}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                <div class="row">
+                  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-4">
+                    <label>Same Day</label>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-6 col-xs-8 fl">
+                    <input type="text" id="sameday" name="" readonly="" value="{{payee.sameday? 'Yes' : 'No'}}">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <br>
+          <hr class="hr-color">
+          <br>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12  col-sm-12  form-group form-buttons">
+            <a routerLink="/pages/trx/list" class="btn minor-btn pull-right">CONFIRM</a>
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

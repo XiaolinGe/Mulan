@@ -1,14 +1,14 @@
-import { AppPage } from './app.po';
+import { AzCliPage } from './app.po';
 
-describe('mulan App', () => {
-  let page: AppPage;
+describe('az-cli App', () => {
+  let page: AzCliPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new AzCliPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });

@@ -1,0 +1,38 @@
+<div class="container-fluid common-container">
+  <div class="row add-rate-row common-section">
+
+    <div class="col-lg-5 col-md-5  col-sm-6">
+      <h4 class="title theme-color">PROFILE</h4>
+      <hr class="title-bottom-line">
+      <form class="common-form" id="profileForm" novalidate="novalidate">
+
+        <div class="row form-row add-rate-form-row">
+          <div class="col-lg-12 col-md-12  col-sm-12 form-group form-select-group">
+            <label for="name">Login Name</label>
+            <input type="text" [(ngModel)]="user.username" id="username" name="username" required="" aria-required="true" readonly>
+          </div>
+
+          <div class="col-lg-12 col-md-12  col-sm-12 form-group form-select-group">
+            <label for="name">Nick Name</label>
+            <input type="text" [(ngModel)]="user.name" id="name" name="name" required="" aria-required="true">
+          </div>
+
+          <div class="col-lg-12 col-md-12  col-sm-12 form-group form-select-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" [(ngModel)]="user.email" name="email" required="" aria-required="true" readonly>
+          </div>
+
+          <div class="col-lg-12 col-md-12  col-sm-12  form-group form-buttons" *ngIf="false">
+            <input ng-disabled="true" type="submit" class="btn" value="UPDATE">
+            <!-- <input type="submit" class="btn gray-btn" value="CANCEL"> -->
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+    <div class="col-lg-7 col-md-7  col-sm-6"></div>
+
+  </div>
+
+</div>

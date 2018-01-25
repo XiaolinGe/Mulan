@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "mulan"
+    "name": "azimuth"
   },
   "apps": [
     {
@@ -17,14 +17,47 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "az",
       "styles": [
-        "styles.css"
+        "../node_modules/font-awesome/scss/font-awesome.scss",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "app/theme/styles/css/owl.carousel.css",
+        "app/theme/styles/css/category.css",
+        "app/theme/styles/css/owl.theme.css",
+        "app/theme/styles/css/owl.transitions.css",
+        "app/theme/styles/css/megamenu.css",
+        "app/theme/js/product-detail/lightslider.css",
+        "app/theme/styles/css/ct-icon-theme.css",
+        "app/theme/styles/css/ripples.min.css",
+        "app/theme/styles/css/styles.css",
+        "app/theme/styles/css/responsive.css",
+        "style.css"
+
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/jquery-ui-dist/jquery-ui.min.js",
+        "../node_modules/tether/dist/js/tether.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "../node_modules/skycons/skycons.js",
+        "../node_modules/icheck/icheck.js",
+        "../node_modules/jquery-knob/dist/jquery.knob.min.js",
+        "../node_modules/d3/d3.min.js",
+        "../node_modules/topojson/dist/topojson.min.js",
+        "../node_modules/datamaps/dist/datamaps.all.hires.min.js",
+        "../node_modules/moment/moment.js",
+        "../node_modules/fullcalendar/dist/fullcalendar.min.js",
+        "../node_modules/dropzone/dist/dropzone.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
+        "app/theme/js/owl.carousel.js",
+        "app/theme/js/script.js",
+        "app/theme/js/product-detail/lightslider.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
+        "local": "environments/environment-local.ts",
         "dev": "environments/environment.ts",
+        "test": "environments/environment.dev-test.ts",
         "prod": "environments/environment.prod.ts"
       }
     }
@@ -36,16 +69,13 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json",
-      "exclude": "**/node_modules/**"
+      "project": "src/tsconfig.app.json"
     },
     {
-      "project": "src/tsconfig.spec.json",
-      "exclude": "**/node_modules/**"
+      "project": "src/tsconfig.spec.json"
     },
     {
-      "project": "e2e/tsconfig.e2e.json",
-      "exclude": "**/node_modules/**"
+      "project": "e2e/tsconfig.e2e.json"
     }
   ],
   "test": {
@@ -54,7 +84,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "component": {}
   }
 }

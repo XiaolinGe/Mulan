@@ -1,0 +1,271 @@
+<div class="container-fluid common-container" cg-busy="Ctrl.myPromise">
+  <div class="row add-rate-row common-section">
+
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h4 class="title theme-color">DEAL CONFIRMED</h4>
+      <hr class="title-bottom-line">
+
+      <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm)" class="common-form">
+
+        <div class="row" *ngIf="parentTrxId">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group original-order-info-container">
+            <label for="originalOrderId" class="fl">Original Spot ID</label>
+            <input style="cursor: pointer;"
+                   type="text"
+                   (click)="parentTrxModal.open()"
+                   id="originalOrderId"
+                   class="no-border fl"
+                   value="{{parentTrx?.orderId}}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group original-order-info-container">
+            <label for="spotId" class="fl">Spot ID</label>
+            <input type="text"
+                   id="spotId"
+                   readonly
+                   class="no-border fl"
+                   value="{{receivedTrx?.orderId}}">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <label for="bookedAte">Created on</label>
+            <input type="text" id="bookedAte" name="" readonly="" value="{{receivedTrx?.bookedAt * 1000 | date}}">
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <label>Rate</label>
+            <div>
+              <span>{{receivedTrx?.rate }}</span>&nbsp;
+            </div>
+          </div>
+
+          <!--<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group" *ngIf="receivedTrx?.reversed">-->
+          <!--<label for="rate">Bought rate</label>-->
+          <!--<div>-->
+          <!--<span>1</span>&nbsp;-->
+          <!--<span>{{receivedTrx?.buyCurrency}}</span> = -->
+          <!--<span>{{receivedTrx?.rate | number : 4 }}</span>&nbsp;-->
+          <!--<span>{{receivedTrx?.sellCurrency}}</span>-->
+          <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group" *ngIf="!receivedTrx?.reversed">-->
+          <!--<label for="rate">Bought rate</label>-->
+          <!--<div>-->
+          <!--<span>1</span>&nbsp;-->
+          <!--<span>{{receivedTrx?.sellCurrency}}</span> =-->
+          <!--<span>{{receivedTrx?.rate | number : 4 }}</span>&nbsp;-->
+          <!--<span>{{receivedTrx?.buyCurrency}}</span>-->
+          <!--</div>-->
+          <!--</div>-->
+
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group buy-currency-item">
+            <label for="buyCurrency">Bought currency</label>
+            <input type="text" id="buyCurrency" name="" readonly="" value="{{receivedTrx?.buyCurrency}}">
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <label for="buyAmount">Amount</label>
+            <input type="text" id="buyAmount" name="" readonly="" value="{{receivedTrx?.buyAmount}}">
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+            <label for="sellCurrency">Sold currency</label>
+            <input type="text" id="sellCurrency" name="" readonly="" value="{{receivedTrx?.sellCurrency}}">
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12"></div>
+
+          <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+            <label for="sellAmount">Amount</label>
+            <input type="text" id="sellAmount" name="" readonly="" value="{{receivedTrx?.sellAmount}}">
+          </div>
+        </div>
+
+        <!--<div class="row">-->
+        <!--<div class="col-lg-12 col-md-12  col-sm-12  form-group form-buttons">-->
+        <!--<a type="submit" class="btn minor-btn">NEXT</a>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+        <!-- Add payers and payees BEGIN -->
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <h5 class="title theme-color">PAYER AND PAYEE DETAILS</h5>
+            <hr class="title-bottom-line">
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="changeability?.dividable">
+            <div (click)="addPayerFormControl()" class="sm-add-button add-control add-payer-control theme-color fr"
+                 id="add-payer-control"
+                 *ngIf="getPayerFormData().controls.length < 1 ">
+              + Add another payer
+            </div>
+          </div>
+
+          <!--<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"-->
+          <!--*ngIf="!Ctrl.isBroker && Ctrl.toAddPayers.length < 1">-->
+          <!--<div ng-click="Ctrl.addPayer()" class="add-control add-payer-control theme-color fr"-->
+          <!--id="add-payer-control">+ ADD PAYEE-->
+          <!--</div>-->
+          <!--</div>-->
+
+        </div>
+
+        <div class="payer-place" id="payer-place-init">
+          <ngx-loading [show]="loading"></ngx-loading>
+          <br>
+          <div formArrayName="payers" id="payers">
+            <div *ngFor="let payerForm of getPayerFormData().controls; let i=index" class="panel panel-default">
+              <div class="panel-body" [formGroupName]="i">
+
+                <payer-submit-component [group]="getPayerFormData().controls[i]" [trx]="toAddTrx"
+                                        [trxChild]="getChildTrx(i)"></payer-submit-component>
+
+                <div class="row mt-30">
+                  <div
+                    class="col-lg-6 col-md-6  col-sm-6 form-group remove-control-container remove-bank-account-control-container"
+                    (click)="removePayerFormControl(i)">
+                    <a class="sm-remove-button remove-exist-bank-account-control pull-left"
+                          *ngIf="getPayerFormData().controls.length > 1">- Remove this payer</a>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="changeability?.dividable">
+                    <a class="sm-add-button add-bank-account-control fr pull-right"
+                         (click)="addPayerFormControl()" id="add-bank-account-control">+ Add another payer
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="payer-target"></div>
+
+        <!-- Add payers and payees END -->
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6  col-sm-12  form-group form-buttons" *ngIf="changeability?.dividable">
+            <a type="button" routerLink="/pages/trx/confirm/{{receivedTrx?.id}}"
+               class="btn minor-btn pull-left">BACK</a>
+          </div>
+          <div class="col-lg-6 col-md-6  col-sm-12  form-group form-buttons"
+               *ngIf="!changeability?.dividable || !changeability?.editable">
+            <a type="button" routerLink="/pages/trx/list" class="btn minor-btn pull-left">BACK</a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12  form-group form-buttons" *ngIf="changeability?.editable">
+            <button [disabled]="myForm.invalid" type="submit" class="btn minor-btn pull-right">SUBMIT
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<modal #parentTrxModal modalClass="modal-lg">
+  <modal-header>
+    <h4>SPOT DEAL</h4>
+  </modal-header>
+  <modal-content>
+    <div class="common-form">
+      <div class="form-group form-buttons">
+        <!--<div class="modal-header">-->
+        <!--<button type="button" (click)="parentTrxModal.close()" class="close" data-dismiss="modal" aria-label="Close">-->
+        <!--<span aria-hidden="true">×</span></button>-->
+        <!--<h4 class="modal-title" id="gridSystemModalLabel">Original Spot</h4>-->
+        <!--</div>-->
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+              <label for="bookedAte">Created on</label>
+              <input id="CreateOn" name="" readonly=""
+                     value="{{parentTrx?.bookedAt * 1000 | date}}" readonly>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+              <label for="boughtRate">Bought rate</label>
+              <input id="boughtRate" name="" readonly="" value="{{parentTrx?.rate}}" readonly>
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+              <label for="buyCurrency">Bought currency</label>
+              <input type="text" id="buyCurrency" name="" readonly="" value="{{parentTrx?.buyCurrency}}">
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+              <label for="buyAmount">Amount</label>
+              <input type="text" id="buyAmount" name="" readonly=""
+                     value="{{parentTrx?.buyAmount}}">
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+              <label for="sellCurrency">Sold currency</label>
+              <input type="text" id="sellCurrency" name="" readonly="" value="{{parentTrx?.sellCurrency}}">
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+              <label for="sellAmount">Amount</label>
+              <input type="text" id="sellAmount" name="" readonly=""
+                     value="{{parentTrx?.sellAmount}}">
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item"
+                 *ngIf="parentTrx?.overnightRate > 0">
+              <label for="overnightRate">Overnight Rate</label>
+              <input type="text" id="overnightRate" name="" readonly="" value="{{parentTrx?.overnightRate}}">
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group"
+                 *ngIf="parentTrx && parentTrx?.serviceFee > 0">
+              <label for="serviceFee">Service Fee</label>
+              <input type="text" id="serviceFee" name="" readonly="" value="{{parentTrx?.serviceFee}}">
+            </div>
+            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </modal-content>
+  <modal-footer>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <button (click)="parentTrxModal.close()" class="btn theme-primary-btn pull-right">Close</button>
+      </div>
+    </div>
+  </modal-footer>
+</modal>

@@ -1,0 +1,226 @@
+
+<!-- HEADER -->
+<header>
+
+  <div id="toggle-nav" class="visible-xs">
+			<span data-action="toggle-nav" class="action mt-menu-label">
+				<span class="mt-menu-bread mt-menu-bread-top">
+					<span class="mt-menu-bread-crust mt-menu-bread-crust-top"></span>
+				</span>
+				<span class="mt-menu-bread mt-menu-bread-middle">
+					<span class="mt-menu-bread-crust mt-menu-bread-crust-middle"></span>
+				</span>
+				<span class="mt-menu-bread mt-menu-bread-bottom">
+					<span class="mt-menu-bread-crust mt-menu-bread-crust-bottom"></span>
+				</span>
+			</span>
+  </div>
+
+
+  <nav id="main-menu">
+    <div class="container clever-menu wrap-main-menu padding-0">
+      <ul>
+        <li class="level0 dropdown"><a href="/pages/product/list">jewellery</a></li>
+        <li class="level0 logo-container"><a class="logo" href="./index.html">MULAN</a></li>
+
+        <li class="level0 dropdown"><a href="/pages/payer/list">the art</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="header-right container">
+    <div class="right-content">
+      <div class="item addto-top">
+        <div class="minicart">
+                    <span class="cart-icon"><span class="cs-font clever-icon-cart-3"></span><span
+                      class="counter-number">0</span></span>
+          <div id="minicart-popup">
+            <h3 class="mp-title"><span>MY CART</span>
+              <a href="javascript:void(0)" id="btn-minicart-close" class="pull-right close-minicart">
+                <span class="cs-font clever-icon-close"></span>
+              </a>
+            </h3>
+            <div class="mp-content">
+              <div class="bg-cart-empty"></div>
+            </div>
+          </div>
+          <div class="shadow-popup"></div>
+        </div>
+      </div>
+      <div class="item user">
+        <span class="cs-font clever-icon-user-2"></span>
+        <div class="top-bar-dropdown">
+          <div id="currencies-top" class="">
+            <label>Currency: </label>
+            <div class="dropdown-currency">
+              <ul id="currencies" class="currencies_ul list-unstyle">
+                <li class="">
+                  <a data-currency="USD" class=" currency selected" rel="nofollow">USD</a>
+                </li>
+                <li class="">
+                  <a data-currency="EUR" class=" currency " rel="nofollow">EUR</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="cusstom-link">
+            <ul class="customer-links">
+              <li class="wishlist-menu"><i class="fa fa-heart" aria-hidden="true"></i><a
+                href="/pages/wish-list" title="My Wishlist">My Wishlist</a></li>
+              <li><i class="fa fa-check-square-o" aria-hidden="true"></i><a href="/checkout"><span>Checkout</span></a>
+              </li>
+              <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/account/login"
+                                                                     id="customer_login_link">Sign In</a>
+              </li>
+              <li><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/account/register"
+                                                                       id="customer_register_link">Create
+                an account</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="item search">
+        <span class="cs-font clever-icon-search-4"></span>
+        <form>
+          <div class="form-group">
+            <input id="search" type="text" name="q" class="form-control" value="Search for Products"
+                   onclick="this.value=='Search for Products'?this.value='':''"
+                   onblur="this.value==''?this.value='Search for Products':''" maxlength="128">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</header>
+<!-- END HEADER -->
+
+<!-- MAIN -->
+<section class="main-content">
+
+  <!-- MAIN SLIDER -->
+  <div class="wrap-main-slide container padding-0">
+    <div class="main-slide">
+      <div id="carousel-main-slide" class="carousel slide " data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-main-slide" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-main-slide" data-slide-to="1"></li>
+          <li data-target="#carousel-main-slide" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <div class="main-slide-content"
+                 style="background-image:url('http://placehold.it/1170x600'); background-size: cover; background-repeat: no-repeat; width: 100%; background-position: center center;">
+              <div class="caption-slide">
+                <img src="assets/img/products/ML1.jpeg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="main-slide-content"
+                 style="background-image:url('http://placehold.it/1170x600'); background-size: cover; background-repeat: no-repeat; width: 100%; background-position: center center;">
+              <div class="caption-slide">
+                <img src="assets/img/products/art7.jpeg" alt="">
+                <h2>5 best selling bluetooth headphone for mobile</h2>
+                <a class="button" href="javascript:void(0)">shop now</a>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="item">
+              <div class="main-slide-content" style="background-image:url('assets/img/products/slider_03.jpg');">
+                  <div class="caption-slide">
+                      <h2>5 best selling bluetooth headphone for mobile</h2>
+                      <a class="button" href="javascript:void(0)">shop now</a>
+                  </div>
+              </div>
+          </div> -->
+        </div>
+      </div>
+      <!-- Controls -->
+      <div class="wrap-control">
+        <a class=" nav-control left-control" href="#carousel-main-slide" role="button" data-slide="prev">
+          <i class="clever-icon-preview  cs-font"></i>
+        </a>
+        <a class="nav-control right-control" href="#carousel-main-slide" role="button" data-slide="next">
+          <i class="clever-icon-next  cs-font"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  <!-- END MAIN SLIDER -->
+
+  <br>
+  <br>
+  <br>
+
+</section>
+<!-- END MAIN -->
+<!-- FOOTER -->
+<footer>
+  <section class="main-footer container padding-0">
+    <div class="footer-info">
+      <div class="row">
+        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+          <h4 class="title">customer service</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Affiliate</a></li>
+            <li><a href="#">Responsibility</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+          <h4 class="title">Help</h4>
+          <ul>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Track Orders</a></li>
+          </ul>
+        </div>
+        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+          <h4 class="title">Follow us</h4>
+          <ul>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i>Pinterest</a></li>
+            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i>Instagram</a></li>
+          </ul>
+        </div>
+        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6"></div>
+        <div class="item newsletter col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <h4 class="title">Newsletter</h4>
+          <span>Subscribe now to get daily updates</span>
+          <form>
+            <input id="newsletter" type="text" name="new" class="form-new" value="Your email address"
+                   onclick="this.value=='Your email address'?this.value='':''"
+                   onblur="this.value==''?this.value='Your email address':''" maxlength="128">
+            <button>subscribe</button>
+          </form>
+          <span>Don’t worry we don’t spam</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="row">
+        <div class="left col-lg-6 col-md-6 col-sm-6 col-xs-12">Copyright © 2016 <a href="http://cleversoft.co/">ZooTemplate.</a>
+          All rights reserved.
+        </div>
+        <div class="right col-lg-6 col-md-6 col-sm-6 col-xs-12">Any questions? Let us help you.<br>Call us: <a
+          href="tel:0123546868">+84 12354 6868</a></div>
+      </div>
+    </div>
+  </section>
+</footer>
+<!-- END FOOTER -->
+
+
+
+
+

@@ -1,0 +1,274 @@
+<div class="container-fluid common-container">
+  <ngx-loading [show]="loading"></ngx-loading>
+  <div class="row  common-section">
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h4 class="title theme-color">Balances</h4>
+      <hr class="title-bottom-line">
+      <form action="" class="common-form" *ngIf="false">
+        <div class="row ">
+          <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12 form-group">
+            <input type="text" class="search-box" placeholder="Search orders">
+            <span class="glyphicon glyphicon-search search-icon"></span>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 form-group">
+            <div class="input-group date date-picker-container" id="dateStart">
+              <!--<input type="text" class="form-control" placeholder="From">-->
+              <input name="fromTime" type="datetime" class="form-control" date-time
+                     ng-model="Ctrl.startDate" min-view="date" auto-close="true"
+                     format="DD MMM YYYY" placeholder="From">
+              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 form-group">
+            <div class="input-group date date-picker-container" id="dateEnd">
+              <input name="toTime" type="datetime" class="form-control" date-time ng-model="Ctrl.endDate"
+                     min-view="date" auto-close="true"
+                     format="DD MMM YYYY" placeholder="To">
+              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-2 col-xs-6 form-group">
+            <div class="dropdown filter-container">
+              <button class="btn btn-default dropdown-toggle filter-button" type="button"
+                      id="filter-button" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                Filter &nbsp;&nbsp;&nbsp;
+                <span class="caret"></span>
+              </button>
+              <div class="dropdown-menu filter-content" aria-labelledby="dropdownMenu">
+
+                <div class="filter-content-column">
+                  <label>Buy Currency</label>
+                  <div>
+                    <input type="checkbox" id="filter-buy-currency-all" name="">
+                    <label>All</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-buy-currency-option" name="">
+                    <label>NZD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-buy-currency-option" name="">
+                    <label>AUD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-buy-currency-option" name="">
+                    <label>USD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-buy-currency-option" name="">
+                    <label>SGD</label>
+                  </div>
+
+                </div>
+
+                <div class="filter-content-column">
+                  <label>Sell Currency</label>
+                  <div>
+                    <input type="checkbox" id="filter-sell-currency-all" name="">
+                    <label>All</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-sell-currency-option" name="">
+                    <label>NZD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-sell-currency-option" name="">
+                    <label>AUD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-sell-currency-option" name="">
+                    <label>USD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-sell-currency-option" name="">
+                    <label>SGD</label>
+                  </div>
+
+                </div>
+
+                <div class="filter-content-column filter-content-column-large">
+                  <label>Status</label>
+                  <div>
+                    <input type="checkbox" id="filter-status-all" name="">
+                    <label>All</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-status-option" name="">
+                    <label>Booked</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-status-option" name="">
+                    <label>Payees Added</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-status-option" name="">
+                    <label>Processed</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-status-option" name="">
+                    <label>Settled</label>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 form-group form-buttons">
+            <input type="submit" class="btn" value="Search" style="margin-top: 0; "/>
+          </div>
+        </div>
+      </form>
+
+      <!--选择日期-->
+      <form [formGroup]="searchForm" class="common-form">
+        <div class="row ">
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 form-group">
+            <div class="input-group date date-picker-container" id="dateStart">
+              <!--<input type="text" class="form-control" placeholder="From">-->
+              <input [(ngModel)]="fromTime" formControlName="fromTime" name="fromTime" type="date" class="form-control" format="DD MMM YYYY" placeholder="From">
+              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+            </div>
+          </div>
+
+          <!--<div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 form-group">-->
+            <!--<div class="input-group date date-picker-container" id="dateEnd">-->
+              <!--<input name="fromTime" [(ngModel)]="toTime" formControlName="toTime" type="date" class="form-control" format="DD MMM YYYY" placeholder="To">-->
+              <!--<span class="input-group-addon">-->
+                                <!--<span class="glyphicon glyphicon-calendar"></span>-->
+                            <!--</span>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 form-group form-buttons">-->
+            <!--<input (click)="reset()" type="button" class="btn" value="Reset" style="margin-top: 0; "/>-->
+          <!--</div>-->
+        </div>
+      </form>
+
+
+    </div>
+  </div>
+
+  <div class="row rate-list-row common-section">
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <!-- <a href="" class="panel-export">EXPORT</a> -->
+          <!-- <span class="panel-action-line fr">|</span> -->
+          <!--<a routerLink="/pages/home/dashboard" class="panel-add"><span class="add-icon">+&nbsp;</span>CREATE SPOT-->
+          <!--DEAL</a>-->
+        </div>
+
+        <div class="panel-body">
+          <div class="table-responsive spot-table-container spot-list-table-container" id="no-more-tables">
+
+            <!--<table class="table spot-table  table-hover">-->
+            <!--<thead>-->
+            <!--<tr>-->
+            <!--<th class="rate-list-table-th1" data-field="">Settle Date</th>-->
+            <!--<th class="rate-list-table-th2" data-field="">Currency</th>-->
+            <!--<th class="rate-list-table-th3" data-field="">Opening</th>-->
+            <!--<th class="rate-list-table-th4" data-field="">End Of The Day</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<tr class="spot-deal spot-edit clickable"-->
+            <!--*ngFor="let data of balances | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,totalItems: totalSize }">-->
+
+            <!--<td data-title="Settle Date">{{data.settleDate}}</td>-->
+            <!--<td data-title="Currency">{{data.currency}}</td>-->
+            <!--<td data-title="Opening">{{data.opening}}</td>-->
+            <!--<td data-title="End Of The Day">{{data.endOfTheDay }}</td>-->
+
+            <!--</tr>-->
+            <!--</tbody>-->
+
+            <!--</table>-->
+
+            <table class="table spot-table table-striped  table-hover">
+              <thead>
+              <tr>
+                <!--<th class="rate-list-table-th1" data-field="">Settle Date</th>-->
+                <th class="rate-list-table-th2" data-field="">Currency</th>
+                <th class="rate-list-table-th3" data-field="">Opening</th>
+                <th class="rate-list-table-th4" data-field="">Balance Settlements</th>
+                <th class="rate-list-table-th4" data-field="">Balance Incomings</th>
+                <th class="rate-list-table-th4" data-field="">End Of The Day</th>
+                <th class="rate-list-table-th4" data-field="">Client Fund?</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="spot-deal spot-edit clickable"
+                  *ngFor="let data of balances | paginate: { itemsPerPage: pageSize, currentPage: pageNumber,totalItems: totalSize }">
+
+                <!--<td data-title="Settle Date">{{data.settleDate}}</td>-->
+                <td data-title="Currency">{{data.currency}}</td>
+                <td data-title="Opening">{{data.opening}}</td>
+                <td data-title="Balance Settlements">
+                  <span *ngFor="let d of data.balanceSettlements">
+                    {{d.amount}} <br>
+                  </span>
+                </td>
+                <td data-title="Balance Incomings">
+                  <span *ngFor="let d of data.balanceIncomings">
+                   {{d.amount}} <br>
+                  </span>
+                </td>
+                <td data-title="End Of The Day">{{data.endOfTheDay }}</td>
+                <td data-title="Client Fund?">{{data.clientFund? 'Yes':'No' }}</td>
+              </tr>
+              </tbody>
+
+            </table>
+
+            <!--<div class="row pagination-container no-margin">-->
+            <!--<div class="col-lg-6 col-md-6 no-padding">-->
+            <!--<div class="pull-left pagination-detail">-->
+            <!--<span class="pagination-info">Show</span>-->
+            <!--<span class="page-list">-->
+            <!--<span class="pagination-info">Show</span>-->
+            <!--<span class="page-list">-->
+            <!--<span class="btn-group dropup">-->
+            <!--<select class="form-control" (ngModelChange)="onPageSizeChange($event)"-->
+            <!--[(ngModel)]="pageSize">-->
+            <!--<option [ngValue]="i" *ngFor="let i of [12,24,36,48]">{{i}}</option>-->
+            <!--</select>-->
+            <!--</span> records/page, <span class="theme-color">{{totalSize}}</span> records in total-->
+            <!--</span>-->
+            <!--</span>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-lg-6 col-md-6 no-padding">-->
+            <!--<div class="pull-right pagination-list">-->
+            <!--<pagination-controls-->
+            <!--(pageChange)="pageChanged($event)"-->
+            <!--maxSize="9"-->
+            <!--directionLinks="true"-->
+            <!--autoHide="false"-->
+            <!--previousLabel="Previous"-->
+            <!--nextLabel="Next"-->
+            <!--screenReaderPaginationLabel="Pagination"-->
+            <!--screenReaderPageLabel="page"-->
+            <!--screenReaderCurrentLabel="You're on page">-->
+            <!--</pagination-controls>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

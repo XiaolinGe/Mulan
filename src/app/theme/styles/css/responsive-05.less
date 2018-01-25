@@ -1,0 +1,223 @@
+/* Responsive */
+@media (min-width: 992px){
+	.padding-0{padding:0;}
+}
+@media (max-width: 992px){
+	header {
+		padding: 30px 50px;
+		nav {
+			&#main-menu {
+				.wrap-main-menu {
+					ul {
+						li {
+							&.level0 {
+								padding: 0 10px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	section {
+		&.main-content {
+			.wrap-main-slide {
+				.main-slide {
+					#carousel-main-slide {
+						.carousel-inner {
+							.main-slide-content {
+								.caption-slide {
+									left: 0;
+									h2 {
+										text-align: center;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 767px){
+	body {
+		&.body-nav-open {
+			header {
+				.header-right {
+					.right-content {
+						.item {
+							.form-group {
+								top: 50px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	header {
+		.logo {
+			a {
+				.o-logo, .text-logo {
+					display: none;
+				}
+				.logo-sticky {
+					display: none;
+				}
+				.ione-logo {
+				    top: -10px;
+				    left: 50%;
+				    margin-left: -58.5px;
+				}
+			}
+		}
+		.header-right {
+			.right-content {
+			    top: -8px;
+				right: -30px;
+				.item {
+					&.search {
+						display: none;
+					}
+					&.user {
+						display: none;
+					}
+					.minicart {
+						#minicart-popup {
+							width: 300px;
+						}
+					}
+					&.addto-top {
+						font-size: 30px;
+						margin-right: -5px;
+						margin-top: -10px;
+					}
+				}
+			}
+		}
+		&.is-sticky {
+			min-height: 70px;
+			.logo {
+				&.container {
+					.ione-logo {
+						position: absolute;
+					    left: 50%;
+					    margin-left: -58.5px;
+					    display: block;
+					}
+					.logo-sticky {
+						display: none;
+					}
+				}
+			}
+			#toggle-nav {
+				top: 15px;
+			}
+			#main-menu {
+				background: #1F1F1F;
+			}
+		}
+	}
+	section {
+		&.main-content {
+			.features-product {
+				.main-content {
+					.image {
+						img {
+							width: 100%;
+						}
+					}
+				}
+			}
+			.carousel-product {
+				.products-grid {
+					#owl-arrivals {
+						.owl-controls {
+							.owl-buttons {
+								display: none;
+							}
+						}
+					}
+				}
+			}
+			.wrap-main-slide {
+				.main-slide {
+					#carousel-main-slide {
+						.carousel-inner {
+							.item {
+								.main-slide-content {
+									.caption-slide {
+										left: 0;
+										h2 {
+											text-align: center;
+										}
+									}
+									.lookbook {
+										.lookbook__image {
+											width: 100%;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	footer {
+		padding: 0;
+		.main-footer {
+			.footer-copyright {
+				.left, .right {
+					text-align: center;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 420px){
+	section {
+		&.main-content {
+			.box-content {
+				.item-box {
+					width: 100%;
+					padding: 0;
+					margin-bottom: 10px;
+					&.first {
+
+					}
+				}
+			}
+			.wrap-main-slide {
+				.main-slide {
+					#carousel-main-slide {
+						.carousel-inner {
+							.main-slide-content {
+								.caption-slide {
+									h2 {
+										width: 100%;
+										font-size: 16px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	footer {
+		.main-footer {
+			.footer-copyright {
+				.left {
+					text-align: center;
+				}
+				.right {
+					text-align: center;
+				}
+			}
+		}
+	}
+}

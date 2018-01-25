@@ -1,0 +1,200 @@
+<!-- MAIN -->
+<section class="main-content">
+
+  <div class="container">
+    <div class="row mains">
+      <category-list-component></category-list-component>
+      <div class="main col-lg-9 col-md-9 col-sm-9 col-xs-12">
+
+        <!-- MAIN SLIDER -->
+        <div class="wrap-main-slide">
+          <div class="main-slide">
+            <div id="carousel-main-slide" class="carousel slide " data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-main-slide" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-main-slide" data-slide-to="1"></li>
+                <li data-target="#carousel-main-slide" data-slide-to="2"></li>
+              </ol>
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <div class="main-slide-content" style="background-image:url('assets/img/products/ML3.jpg');">
+                    <div class="caption-slide">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="main-slide-content" style="background-image:url('assets/img/products/ML4.jpg');">
+                    <div class="caption-slide">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="main-slide-content" style="background-image:url('assets/img/products/ML5.jpg');">
+                    <div class="caption-slide">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Controls -->
+            <div class="wrap-control">
+              <a class=" nav-control left-control" href="#carousel-main-slide" role="button" data-slide="prev">
+                <i class="clever-icon-preview  cs-font"></i>
+              </a>
+              <a class="nav-control right-control" href="#carousel-main-slide" role="button" data-slide="next">
+                <i class="clever-icon-next  cs-font"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+        <!-- END MAIN SLIDER -->
+
+        <div id="container">
+
+          <i class="slider-show fa fa-sliders" aria-hidden="true"></i>
+          <input id="tab-1" type="radio" name="tab-group" checked="checked"/>
+          <label for="tab-1"><span class="cs-font clever-icon-grid"></span></label>
+
+          <input id="tab-2" type="radio" name="tab-group"/>
+          <label for="tab-2"><span class="cs-font clever-icon-list"></span></label>
+
+          <span class="showing">Showing 1–24 of 72 results</span>
+
+          <select>
+            <option value="default">Dedault sorting</option>
+            <option value="name">Name sorting</option>
+            <option value="id">ID sorting</option>
+            <option value="date">Date sorting</option>
+          </select>
+
+          <div id="content">
+
+            <div class="content" id="content-1">
+              <div class="row">
+
+                <div class="product-item col-lg-3 col-md-3 col-sm-4 col-xs-6"
+                     *ngFor="let data of products | paginate: { itemsPerPage: pageSize,
+                                                      currentPage: pageNumber,
+                                                      totalItems: totalSize }">
+                  <div class="top-product-item">
+                    <a class="img-product" href="/pages/product/{{data.id}}">
+                      <img    src="{{data.imgUrls.split(',')[0]}}" class="img-responsive" alt=""/>
+                      <span class="image-hover"><img class="img-responsive" src="{{data.imgUrls.split(',')[0]}}"   alt=""/></span>
+                    </a>
+                    <div class="sale">
+                      <label>-39%</label>
+                    </div>
+                    <div class="addto-wishlist">
+                      <a href="/pages/product/detail">
+                        <i class="fa fa-heart-o"></i>
+                        <span class="tooltip">Add to wishlist</span>
+                      </a>
+                    </div>
+                    <div class="quickview"><a href="/pages/product/detail">Quick View</a></div>
+                  </div>
+                  <div class="bottom-product-item">
+                    <h5 class="product-name"><a href="/pages/product/detail">{{data.name}}</a></h5>
+                    <div class="price-box">
+                      <span class="old-price price">${{data.price}}</span>
+                      <span class="special-price price">${{data.specialPrice}}</span>
+                    </div>
+                    <div class="rating-star"></div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- END MAIN -->
+<!-- FOOTER -->
+<footer>
+  <section class="main-footer container padding-0">
+    <div class="footer-info">
+      <div class="row">
+        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+          <h4 class="title">customer service</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Affiliate</a></li>
+            <li><a href="#">Responsibility</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+          <h4 class="title">Help</h4>
+          <ul>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Shipping</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Track Orders</a></li>
+          </ul>
+        </div>
+        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+          <h4 class="title">Follow us</h4>
+          <ul>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+            <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i>Pinterest</a></li>
+            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i>Instagram</a></li>
+          </ul>
+        </div>
+        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6"></div>
+        <div class="item newsletter col-lg-4 col-md-4 col-sm-4 col-xs-6">
+          <h4 class="title">Newsletter</h4>
+          <span>Subscribe now to get daily updates</span>
+          <form>
+            <input id="newsletter" type="text" name="new" class="form-new" value="Your email address"
+                   onclick="this.value=='Your email address'?this.value='':''"
+                   onblur="this.value==''?this.value='Your email address':''" maxlength="128">
+            <button>subscribe</button>
+          </form>
+          <span>Don’t worry we don’t spam</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="row">
+        <div class="left col-lg-6 col-md-6 col-sm-6 col-xs-12">Copyright © 2016 <a href="http://cleversoft.co/">ZooTemplate.</a>
+          All rights reserved.
+        </div>
+        <div class="right col-lg-6 col-md-6 col-sm-6 col-xs-12">Any questions? Let us help you.<br>Call us: <a
+          href="tel:0123546868">+84 12354 6868</a></div>
+      </div>
+    </div>
+  </section>
+</footer>
+<!-- END FOOTER -->
+<script type="text/javascript">
+  $(function () {
+    $("#slider-range").slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [75, 300],
+      slide: function (event, ui) {
+        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+      }
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+      " - $" + $("#slider-range").slider("values", 1));
+  });
+</script>
+

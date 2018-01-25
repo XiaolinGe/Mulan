@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  // tslint:disable-next-line:component-selector
+  selector: 'az-root',
+  encapsulation: ViewEncapsulation.None,
+  template: `<router-outlet></router-outlet>`,
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'Mulan';
-}
+
+export class AppComponent { }

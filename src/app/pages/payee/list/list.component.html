@@ -1,0 +1,177 @@
+<div class="container-fluid common-container" cg-busy="Ctrl.myPromise">
+  <div class="row rate- common-section">
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h4 class="title theme-color">PAYEE LIST</h4>
+      <hr class="title-bottom-line">
+      <form action="" class="common-form">
+        <label>Please select a payer</label>
+        <div class="row" *ngIf="false">
+          <div class="col-lg-5 col-md-5 col-sm-3 col-xs-12 form-group">
+            <select id="payerId"
+                    [(ngModel)]="payerId"
+                    (ngModelChange)="onPayerChanged($event)"
+                    name="payerId"
+                    class="select-control">
+              <option value="">Please Select</option>
+              <option *ngFor="let payer of payers" value="{{payer.id}}">{{payer.name}}</option>
+            </select>
+          </div>
+
+          <div class="col-lg-5 col-md-5 col-sm-7 col-xs-12 form-group">
+            <input [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}" type="text" class="search-box" placeholder="Search payee">
+            <span class="glyphicon glyphicon-search search-icon"></span>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-group form-buttons" ng-if="false">
+            <input (click)="refresh()" type="button" class="btn" value="Search" style="margin-top: 0; ">
+          </div>
+        </div>
+
+
+        <!--<div class="row" *ngIf="false">-->
+          <!--<div class="col-lg-5 col-md-5 col-sm-3 col-xs-12 form-group">-->
+            <!--<ng-select [allowClear]="false"-->
+                       <!--[multiple]="false"-->
+                       <!--[active]="selectedPayer"-->
+                       <!--[items]="payersForSelect"-->
+                       <!--[(ngModel)]="selectedPayer"-->
+                       <!--[ngModelOptions]="{standalone: true}"-->
+                       <!--(data)="refreshValue($event)"-->
+                       <!--(selected)="selected($event)"-->
+                       <!--(removed)="removed($event)"-->
+                       <!--(typed)="typed($event)"-->
+                       <!--class="select-control"-->
+                       <!--placeholder="Please select payer">-->
+            <!--</ng-select>-->
+          <!--</div>-->
+
+          <!--<div class="col-lg-5 col-md-5 col-sm-7 col-xs-12 form-group">-->
+            <!--<input [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}" type="text" class="search-box" placeholder="Search payee">-->
+            <!--<span class="glyphicon glyphicon-search search-icon"></span>-->
+          <!--</div>-->
+
+          <!--<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-group form-buttons" ng-if="false">-->
+            <!--<input [disabled]="!(payerId > 0)" (click)="refresh()" type="button" class="btn" value="Search" style="margin-top: 0; ">-->
+          <!--</div>-->
+        <!--</div>-->
+
+        <div class="row">
+          <div class="col-lg-5 col-md-5 col-sm-3 col-xs-12 form-group">
+            <my-payer-select (payerSelected)="myPayerSelected($event)"></my-payer-select>
+          </div>
+
+          <div class="col-lg-5 col-md-5 col-sm-7 col-xs-12 form-group">
+            <input [(ngModel)]="keyword" [ngModelOptions]="{standalone: true}" type="text" class="search-box" placeholder="Search payee">
+            <span class="glyphicon glyphicon-search search-icon"></span>
+          </div>
+
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 form-group form-buttons">
+            <input [disabled]="!(payerId > 0)" (click)="refresh()" type="button" class="btn" value="Search" style="margin-top: 0; ">
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+  <div class="row rate-list-row common-section">
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <a routerLink="/pages/payees/add" class="panel-add sm-add-button"><span class="add-icon">+&nbsp;</span>ADD PAYEE</a>
+
+        </div>
+
+        <!-- custom paging -->
+        <div class="panel-body">
+          <div class="table-responsive spot-table-container spot-list-table-container" id="no-more-tables">
+            <table class="table spot-table  table-hover">
+              <thead>
+              <tr>
+                <th class="rate-list-table-th1" data-field="">Payee Name</th>
+                <th class="rate-list-table-th2" data-field="">Payer Name</th>
+                <th *ngIf="isBroker" class="rate-list-table-th3" data-field="">Verified?</th>
+                <th class="rate-list-table-th3" data-field="">Country</th>
+                <th class="rate-list-table-th4" data-field="">City</th>
+                <!-- <th class="rate-list-table-th7" data-field="">Status</th> -->
+                <th class="rate-list-table-th8" data-field="">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="payee-edit clickable payee-enable" id="row"
+                  *ngFor="let data of payees | paginate: { itemsPerPage: pageSize,
+                                                      currentPage: pageNumber,
+                                                      totalItems: totalSize }">
+                <td data-title="Payee Name" routerLink="/pages/payees/edit/{{data.id}}">{{data.name}}</td>
+                <td data-title="Payer Name" routerLink="/pages/payees/edit/{{data.id}}">{{data.payer.name}}</td>
+                <td *ngIf="isBroker" data-title="Verified" routerLink="/pages/payees/edit/{{data.id}}">{{data.verify? 'Yes' : 'No'}}</td>
+                <td data-title="Country" routerLink="/pages/payees/edit/{{data.id}}">{{data.country}}</td>
+                <td data-title="City" routerLink="/pages/payees/edit/{{data.id}}">{{data.city}}</td>
+                <!-- <td ng-click="Ctrl.edit(payee)">{{payee.status}}</td> -->
+                <td data-title="Action">
+                  <!-- <a class="btn disable-btn">Edit</a> -->
+                  <button *ngIf="data.enable"
+                          mwlConfirmationPopover
+                          class="btn disable-btn"
+                          [title]="title"
+                          [message]="message"
+                          [confirmText]="confirmText"
+                          [cancelText]="cancelText"
+                          [placement]="'left'"
+                          (confirm)="disable(data.id, false)"
+                          (cancel)="cancelClicked = true"
+                          confirmButtonType="danger"
+                          cancelButtonType="default"
+                          (click)="confirmClicked = false; cancelClicked = false"
+                          [appendToBody]="true">Disable</button>
+                  <button *ngIf="!data.enable" (click)="disable(data.id, true)" class="btn disable-btn">Enable</button>
+                  <!-- <button class="btn enable-btn">Enable</button> -->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <div class="row pagination-container no-margin">
+              <div class="col-lg-6 col-md-6 no-padding">
+                <div class="pull-left pagination-detail">
+                  <span class="pagination-info">Show</span>
+                  <span class="page-list">
+                        <span class="pagination-info">Show</span>
+                        <span class="page-list">
+                          <span class="btn-group dropup">
+                            <select class="form-control" (ngModelChange)="onPageSizeChange($event)"
+                                    [(ngModel)]="pageSize">
+                                <option [ngValue]="i" *ngFor="let i of [12,24,36,48]">{{i}}</option>
+                            </select>
+                          </span> records/page, <span class="theme-color">{{totalSize}}</span> records in total
+                      </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 no-padding">
+                <div class="pull-right pagination-list">
+                  <pagination-controls
+                    (pageChange)="pageChanged($event)"
+                    maxSize="9"
+                    directionLinks="true"
+                    autoHide="false"
+                    previousLabel="Previous"
+                    nextLabel="Next"
+                    screenReaderPaginationLabel="Pagination"
+                    screenReaderPageLabel="page"
+                    screenReaderCurrentLabel="You're on page">
+                  </pagination-controls>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

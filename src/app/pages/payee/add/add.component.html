@@ -1,0 +1,305 @@
+<div class="container-fluid common-container">
+  <div class="row  common-section">
+
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h4 class="title theme-color">ADD PAYEE</h4>
+      <hr class="title-bottom-line">
+
+      <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm)" class="common-form">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <h5 class="title theme-color">Personal details</h5>
+            <hr class="title-bottom-line">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+            <label for="payerId">Payer name</label>
+            <!--<select id="payerId"-->
+                    <!--formControlName="payerId"-->
+                    <!--[(ngModel)]="payerId"-->
+                    <!--name="name"-->
+                    <!--class="select-control">-->
+              <!--<option value="">Please Select</option>-->
+              <!--<option *ngFor="let payer of payers" value="{{payer.id}}">{{payer.name}}</option>-->
+            <!--</select>-->
+            <input type="text"
+                   id="payerId"
+                   formControlName="payerId"
+                   [(ngModel)]="payerId"
+                   style="display: none">
+            <my-payer-select (payerSelected)="myPayerSelected($event)" [payerIdForLoadSubject]="payerIdSubject"></my-payer-select>
+            <validation-error [control]="myForm.get('payerId')"></validation-error>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+            <!--<label for="postCode">Postcode</label>-->
+            <!--<input formControlName="postCode"-->
+            <!--[(ngModel)]="payee.postCode"-->
+            <!--id="postCode"-->
+            <!--name="postCode">-->
+            <!--<validation-error [control]="myForm.get('postCode')"></validation-error>-->
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+            <label for="name">Payee name</label>
+            <input formControlName="name"
+                   [(ngModel)]="payee.name"
+                   type="text"
+                   id="name"
+                   name="name"
+                   required>
+            <validation-error [control]="myForm.get('name')"></validation-error>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+            <label for="country">Country</label>
+            <select id="country"
+                    formControlName="country"
+                    [(ngModel)]="payee.country"
+                    name="country"
+                    class="select-control">
+              <option value="" selected>Please Select</option>
+              <option *ngFor="let c of countries" value="{{c}}">{{c}}</option>
+            </select>
+            <validation-error [control]="myForm.get('country')"></validation-error>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+            <label for="city">City</label>
+            <input formControlName="city"
+                   [(ngModel)]="payee.city"
+                   type="text"
+                   id="city"
+                   name="city">
+            <validation-error [control]="myForm.get('city')"></validation-error>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+            <label for="addressLine1">Address Line 1</label>
+            <input formControlName="addressLine1"
+                   [(ngModel)]="payee.addressLine1"
+                   type="text"
+                   id="addressLine1"
+                   name="addressLine1"
+            >
+            <validation-error [control]="myForm.get('addressLine1')"></validation-error>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+            <label for="addressLine2">Address Line 2</label>
+            <input formControlName="addressLine2"
+                   [(ngModel)]="payee.addressLine2"
+                   type="text"
+                   id="addressLine2"
+                   name="addressLine2"
+                   required>
+            <validation-error [control]="myForm.get('addressLine2')"></validation-error>
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+            <label for="postCode">Postcode</label>
+            <input formControlName="postCode"
+                   [(ngModel)]="payee.postCode"
+                   id="postCode"
+                   name="postCode">
+            <validation-error [control]="myForm.get('postCode')"></validation-error>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="isBroker">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+            <label for="file">Upload Files</label>
+            <div class="card" widget="">
+              <div class="card-header">
+              </div>
+              <div class="card-block widget-body">
+                <dropzone #dropzoneFile
+                          [config]="config"
+                          [message]="'Click or drag images here to upload'"
+                          (error)="onUploadError($event)"
+                          (removedfile)="removedfile($event)"
+                          (success)="onUploadSuccess($event)">
+                </dropzone>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <h5 class="title theme-color">Bank account details</h5>
+            <hr class="title-bottom-line">
+          </div>
+
+          <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="add-control add-bank-account-control theme-color fr" ng-click="Ctrl.add()" id="add-bank-account-control">+ ADD BANK ACCOUNT
+              </div>
+          </div> -->
+        </div>
+
+        <!-- 已有的银行信息 -->
+        <div class="bank-account-group" *ngFor="let bank of payee.payeeBankAccounts;let i = index">
+          <a class="check-bank-account-control"
+             style="display: block"
+             data-toggle="collapse"
+             data-target="#bank-account-content{{i}}"
+             href="#bank-account-content{{i}}"
+             aria-expanded="false">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <span>{{bank.bankName}}</span>&nbsp;&nbsp;<span>({{bank.clearingCode + bank.accountNumber}})</span>
+                <a data-toggle="collapse" data-target="#bank-account-content{{i}}">
+                  <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
+          </a>
+          <div class="bank-account-content collapse" id="bank-account-content{{i}}">
+            <div class="row">
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+                <label for="currency">Currency</label>
+                <input type="text" id="currency" name="currency" readonly="" [(ngModel)]="bank.currency"
+                       [ngModelOptions]="{standalone: true}">
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+
+                <label for="accountCountry">Account Country</label>
+                <input type="text" id="accountCountry" readonly="" [(ngModel)]="bank.accountCountry"
+                       [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                <label for="accountName">Account name</label>
+                <input type="text" id="accountName" name="" readonly="" [(ngModel)]="bank.accountName"
+                       [ngModelOptions]="{standalone: true}">
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" *ngIf="bank.accountNumber">
+                <label for="accountNumber">Account number</label>
+                <input type="text" id="accountNumber" name="" readonly="" [(ngModel)]="bank.accountNumber"
+                       [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+
+                <label for="bankName">Bank Name</label>
+                <input type="text" id="bankName" name="" readonly="" [(ngModel)]="bank.bankName"
+                       [ngModelOptions]="{standalone: true}">
+
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" *ngIf="bank.clearingCode">
+                <label for="label">{{bank.clearingCodeType}}</label>
+                <input type="text" id="label" name="" readonly="" [(ngModel)]="bank.clearingCode"
+                       [ngModelOptions]="{standalone: true}">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                <label for="branchName">Branch Name</label>
+                <input type="text" id="branchName" name="" readonly="" [(ngModel)]="bank.branchName"
+                       [ngModelOptions]="{standalone: true}">
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group"
+                   *ngIf="bank.swiftCode && bank.swiftCode !== ''">
+                <label for="swift-code">Swift Code </label>
+                <input type="text" id="swift-code" name="swift-code" readonly=""
+                       [(ngModel)]="bank.swiftCode" [ngModelOptions]="{standalone: true}">
+              </div>
+              <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group ">
+                  <label for="branchAddress">Branch Address</label>
+                  <textarea cols="50" rows="4" id="branchAddress" readonly="" readonly>{{bank.branchAddress}}</textarea>
+              </div> -->
+            </div>
+
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6  col-sm-6 form-group">
+                <!-- <span class="" onclick="">+ UPLOAD ATTACHMENT</span> -->
+              </div>
+
+              <div
+                class="col-lg-6 col-md-6  col-sm-6 form-group remove-control-container remove-bank-account-control-container"
+                *ngIf="false">
+                <span (click)="delbankAccount(bank)" class="remove-control remove-exist-bank-account-control">- REMOVE THIS BANK ACCOUNT</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div
+            class="col-lg-6 col-md-6  col-sm-6 form-group remove-control-container remove-bank-account-control-container">
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngIf="getFormData().controls.length < 1">
+            <div class="add-control add-bank-account-control theme-color fr sm-add-button"
+                 (click)="addBankAccountFormControl()">+ ADD
+              BANK ACCOUNT
+            </div>
+          </div>
+        </div>
+
+
+        <div formArrayName="payeeBankAccounts" id="payeeBankAccounts">
+          <div *ngFor="let bankAccount of getFormData().controls; let i=index" class="panel panel-default">
+            <!--<div *ngFor="let bankAccount of myForm.get('bankAccount').; let i=index" class="panel panel-default">-->
+            <!--<div class="panel-heading" *ngIf="getFormData().controls.length > 1">-->
+            <!--&lt;!&ndash; <span class="pull-left">Bank Account {{i + 1}}</span> &ndash;&gt;-->
+            <!--<span class="glyphicon glyphicon-remove pull-right" (click)="removeBankAccount(i)"></span>-->
+            <!--</div>-->
+            <div class="panel-body" [formGroupName]="i">
+              <payee-bank-account-component [group]="getFormData().controls[i]"></payee-bank-account-component>
+
+              <div class="row">
+                <div
+                  class="col-lg-6 col-md-6  col-sm-6 form-group remove-control-container remove-bank-account-control-container"
+                  (click)="removeBankAccountFormControl(i)">
+                  <a class="remove-control remove-exist-bank-account-control sm-remove-button"
+                     style="padding: 8px !important;"
+                     *ngIf="getFormData().controls.length > 0">- REMOVE BANK ACCOUNT</a>
+                </div>
+
+                <div
+                  class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-group remove-control-container remove-bank-account-control-container">
+                  <a class="add-control add-bank-account-control theme-color fr sm-add-button"
+                     (click)="addBankAccountFormControl()"
+                     id="add-bank-account-control">+ ADD BANK ACCOUNT
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-md-12  col-sm-12  form-group form-buttons">
+            <button type="submit" [disabled]="myForm.invalid" class="btn minor-btn">SUBMIT</button>
+            <a style="border-color: grey !important;" routerLink="/pages/payees/list" type="button"
+               class="btn theme-cancle-btn">CANCEL</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

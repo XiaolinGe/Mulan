@@ -1,0 +1,69 @@
+<div class="container-fluid common-container" cg-busy="Ctrl.myPromise">
+  <div class="row add-rate-row common-section">
+
+    <div class="col-lg-5 col-md-5  col-sm-6">
+      <h4 class="title theme-color">NOTIFICATION SETTING</h4>
+      <hr class="title-bottom-line">
+      <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit(myForm)" class="common-form">
+        <div class="row form-row add-rate-form-row">
+          <div class="col-lg-12 col-md-12  col-sm-12 form-group form-select-group">
+            <label for="oldPassword">Old password</label>
+            <input formControlName="oldPassword"
+                   type="password"
+                   id="oldPassword"
+                   name="oldPassword"
+                   required=""
+                   aria-required="true">
+            <validation-error [control]="myForm.get('oldPassword')"></validation-error>
+          </div>
+
+
+          <div class="col-lg-12 col-md-12  col-sm-12 form-group form-select-group">
+            <label for="newPassword">New password</label>
+            <input formControlName="newPassword"
+                   type="password"
+                   id="newPassword"
+                   name="newPassword">
+            <validation-error [control]="myForm.get('newPassword')"></validation-error>
+          </div>
+
+
+          <div class="col-lg-12 col-md-12  col-sm-12 form-group form-select-group">
+            <label for="confirmNewPassword">Confirm new password</label>
+            <input formControlName="confirmPassword"
+                   type="password"
+                   id="confirmNewPassword"
+                   name="confirmNewPassword"
+                   required=""
+                   aria-required="true">
+            <validation-error [control]="myForm.get('confirmPassword')"></validation-error>
+          </div>
+
+          <div class="col-lg-12 col-md-12  col-sm-12  form-group form-buttons">
+            <!--<input type="submit" [disabled]="myForm.invalid" class="btn" value="UPDATE">-->
+            <!--<input type="submit" class="btn gray-btn" value="CANCEL">-->
+            <button mwlConfirmationPopover
+                    [disabled]="myForm.invalid"
+                    class="btn"
+                    [title]="'Attension'"
+                    [message]="'Are you sure to reset password?'"
+                    [confirmText]="confirmText"
+                    [cancelText]="cancelText"
+                    [placement]="'right'"
+                    (confirm)="onSubmit(myForm)"
+                    (cancel)="cancelClicked = true"
+                    confirmButtonType="danger"
+                    cancelButtonType="default"
+                    (click)="confirmClicked = false; cancelClicked = false"
+                    [appendToBody]="true">UPDATE</button>
+          </div>
+
+        </div>
+
+      </form>
+    </div>
+    <div class="col-lg-7 col-md-7  col-sm-6"></div>
+
+  </div>
+
+</div>

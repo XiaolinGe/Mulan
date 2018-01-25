@@ -1,0 +1,405 @@
+<div class="container-fluid common-container" cg-busy="Ctrl.myPromise">
+    <div class="row  common-section">
+
+        <div class="col-lg-12 col-md-12  col-sm-12">
+            <h4 class="title theme-color">EDIT PAYEE</h4>
+            <hr class="title-bottom-line">
+
+            <form ng-submit="Ctrl.processForm(userForm.$valid)" name="userForm" class="common-form" novalidate>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <h5 class="title theme-color">Personal details</h5>
+                        <hr class="title-bottom-line">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                        <label for="payerName">Payer name</label>
+                        <select id="payerName" ng-model="Ctrl.payerId" name="" class="select-control"
+                                ng-options="p.id as p.name for p in Ctrl.payers">
+                        </select>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label for="postcode">Postcode</label>
+                        <input ng-model="Ctrl.payer.postCode"
+                               type="text"
+                               id="postcode"
+                               name="postcode"
+                               required>
+                        <div class="help-block" ng-messages="userForm.postcode.$error"
+                             ng-show="userForm.postcode.$touched">
+                            <div ng-messages-include="src/templates/messages.html"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                        <label for="payerName">Payer name</label>
+                        <input ng-model="Ctrl.payer.name"
+                               type="text"
+                               id="payerName"
+                               name="payerName"
+                               required>
+                        <div class="help-block" ng-messages="userForm.payerName.$error"
+                             ng-show="userForm.payerName.$touched">
+                            <div ng-messages-include="src/templates/messages.html"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                        <label for="country">Country</label>
+                        <select id="country"
+                                name="country"
+                                class="select-control"
+                                ng-model="Ctrl.payer.country"
+                                ng-options="c as c for c in Ctrl.countries">
+                            <!-- <option value="">Australian</option>
+                            <option value="">New Zealand</option> -->
+                        </select>
+                        <div class="help-block" ng-messages="userForm.country.$error"
+                             ng-show="userForm.country.$touched">
+                            <div ng-messages-include="src/templates/messages.html"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                        <label for="address">Street</label>
+                        <input ng-model="Ctrl.payer.address"
+                                  type="text"
+                                  id="address"
+                                  maxlength="35"
+                                  name="address"
+                                  edit_id="eta_0"
+                                  required/>
+                        <div class="help-block" ng-messages="userForm.address.$error"
+                             ng-show="userForm.address.$touched">
+                            <div ng-messages-include="src/templates/messages.html"></div>
+                        </div>
+                        <!-- <img class="ewe_ta_edit_button" edit_id="eta_0" src="chrome-extension://ljobjlafonikaiipfkggjbhkghgicgoh/icons/gumdrop.png"> -->
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  form-group">
+                                <label for="city">City</label>
+                                <input ng-model="Ctrl.payer.city"
+                                       type="text"
+                                       id="city"
+                                       name="payercity"
+                                       required>
+                                <div class="help-block" ng-messages="userForm.payercity.$error"
+                                     ng-show="userForm.payercity.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <h5 class="title theme-color">Bank account details</h5>
+                        <hr class="title-bottom-line">
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <!-- <div ng-click="Ctrl.add()" class="add-control add-bank-account-control theme-color fr" id="add-bank-account-control">+ ADD BANK ACCOUNT
+                        </div> -->
+                    </div>
+                </div>
+
+                <!-- 已有的银行信息 -->
+                <div class="bank-account-group" ng-repeat="bank in Ctrl.payer.payerBankAccounts">
+                    <div class="check-bank-account-control"
+                         data-toggle="collapse"
+                         data-target="#bank-account-content$index"
+                         ng-href="#bank-account-content$index"
+                         aria-expanded="false"
+                         aria-controls="#bank-account-content$index">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <span>bank.bankName</span>&nbsp;&nbsp;<span>(bank.clearingCode + bank.accountNumber)</span>
+                                    <a data-toggle="collapse" data-target="#bank-account-content$index">
+                                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                    </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bank-account-content collapse" id="bank-account-content$index">
+                        <div class="row">
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+                                <label for="currency">Currency</label>
+                                <input type="text" id="label" name="currency" readonly="" ng-model="bank.currency">
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+
+                                <label for="accountCountry">Account Country</label>
+                                <input type="text" id="accountCountry" readonly="" ng-model="bank.accountCountry">
+
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                                <label for="accountName">Account name</label>
+                                <input type="text" id="accountName" name="" readonly="" ng-model="bank.accountName">
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-if="bank.accountNumber">
+                                <label for="accountNumber">Account number</label>
+                                <input type="text" id="accountNumber" name="" readonly="" ng-model="bank.accountNumber">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+
+                                <label for="bankName">Bank Name</label>
+                                <input type="text" id="bankName" name="" readonly="" ng-model="bank.bankName">
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group" ng-if="bank.clearingCode">
+                                <label for="label">bank.clearingCodeType</label>
+                                <input type="text" id="label" name="" readonly="" ng-model="bank.clearingCode">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                                <label for="branchName">Branch Name</label>
+                                <input type="text" id="branchName" name="" readonly="" ng-model="bank.branchName">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group"
+                                 ng-if="bank.swiftCode && bank.swiftCode !== ''">
+                                <label for="swift-code">Swift Code </label>
+                                <input type="text" id="swift-code" name="swift-code" readonly=""
+                                       ng-model="bank.swiftCode">
+                            </div>
+                            <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group ">
+                                <label for="branchAddress">Branch Address</label>
+                                <textarea cols="50" rows="4" id="branchAddress" readonly="" readonly>bank.branchAddress</textarea>
+                            </div> -->
+                        </div>
+
+
+                        <!-- <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                                <label for="bank-city">City</label>
+                                <input ng-model="bank.city" type="text" id="bank-city" name="bank-city">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group ">
+                                <label for="bank-street">Street</label>
+                                <input ng-model="bank.street" type="text" id="bank-street" name="bank-street">
+                            </div>
+                        </div> -->
+
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6  col-sm-6 form-group">
+                                <!-- <span class="" onclick="">+ UPLOAD ATTACHMENT</span> -->
+                            </div>
+
+                            <div class="col-lg-6 col-md-6  col-sm-6 form-group remove-control-container remove-bank-account-control-container">
+                                <span ng-click="Ctrl.delbankAccount(bank)"
+                                      class="remove-control remove-exist-bank-account-control">- REMOVE THIS BANK ACCOUNT</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <br>
+
+
+                <div class="row" ng-show="Ctrl.addDatas.length === 0">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
+                        <a class="add-control add-bank-account-control theme-color fr" ng-click="Ctrl.add()"
+                             id="add-bank-account-control">+ ADD BANK ACCOUNT
+                        </a>
+                    </div>
+                </div>
+
+
+                <div name="subForm" ng-repeat="addData in Ctrl.addDatas track by $index">
+                    <div class="bank-account-place" id="bank-account-place-init">
+                        <br>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+                                <label for="currency">Currency</label>
+                                <select id="currency"
+                                        name="currency"
+                                        class="select-control"
+                                        ng-change="Ctrl.onCodeTypeChanged(addData)"
+                                        ng-model="addData.currency"
+                                        ng-options="bank.currency as bank.currency for bank in Ctrl.banks | unique: 'currency'"
+                                        required>
+                                </select>
+                                <div class="help-block" ng-messages="subForm.currency.$error"
+                                     ng-show="subForm.currency.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+
+
+                                <label for="accountCountry">Account Country</label>
+                                <select id="accountCountry"
+                                        name="accountCountry"
+                                        class="select-control"
+                                        ng-model="addData.accountCountry"
+                                        ng-change="Ctrl.onCodeTypeChanged(addData)"
+                                        ng-options="bank.name as bank.name for bank in Ctrl.banks | unique: 'name'"
+                                        required>
+                                </select>
+                                <div class="help-block" ng-messages="subForm.accountCountry.$error"
+                                     ng-show="subForm.accountCountry.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                                <label for="accountName">Account name</label>
+                                <input ng-model="addData.accountName" type="text" id="accountName" name="accountName"
+                                       non-comma required>
+                                <div class="help-block" ng-messages="subForm.accountName.$error"
+                                     ng-show="subForm.accountName.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group"
+                                 ng-if="addData.bankSelected.needAccountNo">
+                                <label for="accountNumber">Account number</label>
+                                <input ng-model="addData.accountNumber"
+                                       id="accountNumber"
+                                       name="accountNumber"
+                                       nz-bank="addData"
+                                       number-letter
+                                       required>
+                                <div class="help-block" ng-messages="subForm.accountNumber.$error"
+                                     ng-show="subForm.accountNumber.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group">
+
+                                <label for="bankName">Bank Name</label>
+                                <input ng-model="addData.bankName" type="text" id="bankName" name="bankName" non-comma>
+                                <div class="help-block" ng-messages="subForm.bankName.$error"
+                                     ng-show="subForm.bankName.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group"
+                                 ng-if="addData.bankSelected.clearingCodeType">
+                                <label for="label">addData.bankSelected.clearingCodeType</label>
+                                <input ng-model="addData.clearingCode"
+                                       type="text"
+                                       id="label"
+                                       name="clearingCode"
+                                       number-letter
+                                       required>
+                                <div class="help-block" ng-messages="subForm.clearingCode.$error"
+                                     ng-show="subForm.clearingCode.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group">
+                                <label for="branchName">Branch Name</label>
+                                <input ng-model="addData.branchName" type="text" id="branchName" name="branchName"
+                                       non-comma required>
+                                <div class="help-block" ng-messages="subForm.branchName.$error"
+                                     ng-show="subForm.branchName.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group"
+                                 ng-if="addData.bankSelected.needSwiftCode">
+                                <label for="swift-code">Swift Code </label>
+                                <input type="text" id="swift-code" name="swiftCode" ng-model="addData.swiftCode"
+                                       number-letter
+                                       non-comma required>
+                                <div class="help-block" ng-messages="subForm.swiftCode.$error"
+                                     ng-show="subForm.swiftCode.$touched">
+                                    <div ng-messages-include="src/templates/messages.html"></div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group ">
+                                <label for="branchAddress">Branch Address</label>
+                                <textarea cols="50" rows="4" id="branchAddress" readonly="" readonly>bank.branchAddress</textarea>
+                            </div> -->
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-lg-6 col-md-6  col-sm-6 form-group remove-control-container remove-bank-account-control-container"
+                                 ng-click="Ctrl.del(addData)">
+                                <span class="remove-control remove-exist-bank-account-control"
+                                      ng-show="Ctrl.addDatas.length > 1">- REMOVE THIS BANK ACCOUNT</span>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="add-control add-bank-account-control theme-color fr" ng-click="Ctrl.add()"
+                                     id="add-bank-account-control">+ ADD BANK ACCOUNT
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="bank-account-target"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12  col-sm-12  form-group form-buttons">
+                        <button type="submit" ng-disabled="!userForm.$valid" class="btn minor-btn">SUBMIT</button>
+                        <a
+                                ui-sref="payer.list"
+                                style="margin-left: 10px; border-color: grey !important; background-color: grey !important;"
+                                type="button"
+                                class="btn minor-btn btn-cancel">CANCEL
+                        </a>
+                    </div>
+
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>

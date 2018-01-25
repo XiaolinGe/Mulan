@@ -1,0 +1,26 @@
+.progress-box 
+{
+    border: 1px solid #2b36b7;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+
+    .progress-title{
+        height: 16px;
+        font-size: 9px;
+    }
+
+    .progress {
+        height: 7px;
+        border-top: 1px solid #2b36b7;
+        margin-bottom: 0px;
+        border-radius: 0px;
+        .progress-bar-success {
+            border-right: 1px solid #2b36b7;
+            background-color: #DC692B;
+        }
+        .progress-bar-full {
+            border-right: unset;
+        }
+    }
+}

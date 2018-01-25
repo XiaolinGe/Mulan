@@ -1,0 +1,20 @@
+/* remove the original arrow */
+select.input-lg {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  height: 40px;
+  line-height: 14px;
+  font-size: 14px;
+}
+
+select + i.fa {
+  float: right;
+  margin-top: -30px;
+  margin-right: 5px;
+  pointer-events: none;
+  background-color: $white;
+  color: $theme-color;
+  padding-right: 5px;
+  vertical-align: middle;
+}

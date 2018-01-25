@@ -1,0 +1,86 @@
+<!-- HEADER -->
+<header>
+
+  <div id="toggle-nav" class="visible-xs">
+			<span data-action="toggle-nav" class="action mt-menu-label">
+				<span class="mt-menu-bread mt-menu-bread-top">
+					<span class="mt-menu-bread-crust mt-menu-bread-crust-top"></span>
+				</span>
+				<span class="mt-menu-bread mt-menu-bread-middle">
+					<span class="mt-menu-bread-crust mt-menu-bread-crust-middle"></span>
+				</span>
+				<span class="mt-menu-bread mt-menu-bread-bottom">
+					<span class="mt-menu-bread-crust mt-menu-bread-crust-bottom"></span>
+				</span>
+			</span>
+  </div>
+
+
+  <nav id="main-menu">
+    <div class="container clever-menu wrap-main-menu padding-0">
+      <ul>
+        <li class="level0 dropdown"><a href="/pages/product/list">jewellery</a></li>
+        <li class="level0 logo-container"><a class="logo" href="./index.html">MULAN</a></li>
+
+        <li class="level0 dropdown"><a href="/pages/payers/list">the art</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="header-right container">
+    <div class="right-content">
+      <div class="item addto-top">
+        <div class="minicart">
+          <span class="cart-icon"><span class="cs-font clever-icon-cart-3"></span><span class="counter-number">0</span></span>
+          <div id="minicart-popup">
+            <h3 class="mp-title"><span>MY CART</span>
+              <a href="javascript:void(0)" id="btn-minicart-close" class="pull-right close-minicart">
+                <span class="cs-font clever-icon-close"></span>
+              </a>
+            </h3>
+            <div class="mp-content">
+              <div class="bg-cart-empty"></div>
+            </div>
+          </div>
+          <div class="shadow-popup"></div>
+        </div>
+      </div>
+      <div class="item user">
+        <span class="cs-font clever-icon-user-2"></span>
+        <div class="top-bar-dropdown">
+          <div id="currencies-top" class="">
+            <label>Currency: </label>
+            <div class="dropdown-currency">
+              <ul id="currencies" class="currencies_ul list-unstyle">
+                <li class="">
+                  <a data-currency="USD" class=" currency selected" rel="nofollow">USD</a>
+                </li>
+                <li class="">
+                  <a data-currency="EUR" class=" currency " rel="nofollow">EUR</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="cusstom-link">
+            <ul class="customer-links">
+              <li class="wishlist-menu"><i class="fa fa-heart" aria-hidden="true"></i><a href="/pages/wish-list" title="My Wishlist">My Wishlist</a></li>
+              <li><i class="fa fa-check-square-o" aria-hidden="true"></i><a href="/checkout"><span>Checkout</span></a></li>
+              <li><i class="fa fa-sign-in" aria-hidden="true"></i><a href="/account/login" id="customer_login_link">Sign In</a></li>
+              <li><i class="fa fa-user-plus" aria-hidden="true"></i><a href="/account/register" id="customer_register_link">Create an account</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="item search">
+        <span class="cs-font clever-icon-search-4"></span>
+        <form>
+          <div class="form-group">
+            <input id="search" type="text" name="q" class="form-control" value="Search for Products" onclick="this.value=='Search for Products'?this.value='':''" onblur="this.value==''?this.value='Search for Products':''" maxlength="128" >
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</header>
+<!-- END HEADER -->

@@ -1,0 +1,287 @@
+<div class="container-fluid common-container" cg-busy="Ctrl.myPromise">
+  <div class="row  common-section">
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <h4 class="title theme-color">SPOT</h4>
+      <hr class="title-bottom-line">
+      <form action="" class="common-form" *ngIf="false">
+        <div class="row ">
+          <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12 form-group">
+            <input type="text" class="search-box" placeholder="Search orders">
+            <span class="glyphicon glyphicon-search search-icon"></span>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 form-group">
+            <div class="input-group date date-picker-container" id="dateStart">
+              <!--<input type="text" class="form-control" placeholder="From">-->
+              <input name="fromTime" type="datetime" class="form-control" date-time
+                     ng-model="Ctrl.startDate" min-view="date" auto-close="true"
+                     format="DD MMM YYYY" placeholder="From">
+              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6 form-group">
+            <div class="input-group date date-picker-container" id="dateEnd">
+              <input name="toTime" type="datetime" class="form-control" date-time ng-model="Ctrl.endDate"
+                     min-view="date" auto-close="true"
+                     format="DD MMM YYYY" placeholder="To">
+              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 col-sm-2 col-xs-6 form-group">
+            <div class="dropdown filter-container">
+              <button class="btn btn-default dropdown-toggle filter-button" type="button"
+                      id="filter-button" data-toggle="dropdown" aria-haspopup="true"
+                      aria-expanded="false">
+                Filter &nbsp;&nbsp;&nbsp;
+                <span class="caret"></span>
+              </button>
+              <div class="dropdown-menu filter-content" aria-labelledby="dropdownMenu">
+
+                <div class="filter-content-column">
+                  <label>Buy Currency</label>
+                  <div>
+                    <input type="checkbox" id="filter-buy-currency-all" name="">
+                    <label>All</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-buy-currency-option" name="">
+                    <label>NZD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-buy-currency-option" name="">
+                    <label>AUD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-buy-currency-option" name="">
+                    <label>USD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-buy-currency-option" name="">
+                    <label>SGD</label>
+                  </div>
+
+                </div>
+
+                <div class="filter-content-column">
+                  <label>Sell Currency</label>
+                  <div>
+                    <input type="checkbox" id="filter-sell-currency-all" name="">
+                    <label>All</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-sell-currency-option" name="">
+                    <label>NZD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-sell-currency-option" name="">
+                    <label>AUD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-sell-currency-option" name="">
+                    <label>USD</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-sell-currency-option" name="">
+                    <label>SGD</label>
+                  </div>
+
+                </div>
+
+                <div class="filter-content-column filter-content-column-large">
+                  <label>Status</label>
+                  <div>
+                    <input type="checkbox" id="filter-status-all" name="">
+                    <label>All</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-status-option" name="">
+                    <label>Booked</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-status-option" name="">
+                    <label>Payees Added</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-status-option" name="">
+                    <label>Processed</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" class="filter-status-option" name="">
+                    <label>Settled</label>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-12 col-sm-12 col-xs-6 form-group form-buttons">
+            <input type="submit" class="btn" value="Search" style="margin-top: 0; "/>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row rate-list-row common-section">
+    <div class="col-lg-12 col-md-12  col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <!-- <a href="" class="panel-export">EXPORT</a> -->
+          <!-- <span class="panel-action-line fr">|</span> -->
+          <a routerLink="/pages/home/dashboard" class="panel-add"><span class="add-icon">+&nbsp;</span>CREATE SPOT
+            DEAL</a>
+        </div>
+
+        <div class="panel-body">
+          <div class="table-responsive spot-table-container spot-list-table-container" id="no-more-tables">
+
+            <table class="table spot-table  table-hover">
+              <thead>
+              <tr>
+                <th class="rate-list-table-th1" data-field="">Created date</th>
+                <th class="rate-list-table-th1" data-field="">Settled date</th>
+                <th class="rate-list-table-th2" data-field="">Order ID</th>
+                <th class="rate-list-table-th3" data-field="">Bought currency</th>
+                <th class="rate-list-table-th4" data-field="">Amount</th>
+                <th class="rate-list-table-th5" data-field="">Sold currency</th>
+                <th class="rate¬-list-table-th6" data-field="">Amount</th>
+                <th class="rate-list-table-th7" data-field="">Fix rate</th>
+                <!--<th class="rate-list-table-th8" data-field="">Overnight Rate</th>-->
+                <!--<th class="rate-list-table-th9" data-field="">Service Fee</th>-->
+                <th class="rate-list-table-th10" data-field="">Status</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr class="spot-deal spot-edit clickable"
+                  *ngFor="let data of transactions | paginate: { itemsPerPage: pageSize,
+                                                      currentPage: pageNumber,
+                                                      totalItems: totalSize }">
+
+                <td data-title="Created date">{{data.bookedAt * 1000 | date}}</td>
+                <td data-title="Settled date">{{data.settledAt * 1000 | date}}</td>
+                <td data-title="Order ID">{{data.orderId}}</td>
+                <td data-title="Bought Currency">{{data.buyCurrency}}</td>
+                <td data-title="Amount">{{data.buyAmount }}</td>
+                <td data-title="Sold Currency">{{data.sellCurrency}}</td>
+                <td data-title="Amount">{{data.sellAmount }}</td>
+                <td data-title="Fix rate">{{data.rate}}</td>
+                <!--<td data-title="Overnight Rate">data.overnightRate | number:4 </td>-->
+                <!--<td data-title="Service Fee">data.serviceFee | number:4</td>-->
+
+
+                <td data-title="Status" *ngIf="data.status ==='BOOKED'">
+                  <div class="progress-box col-md-12">
+                    <div class="progress-title">BOOKED</div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar"
+                           aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                           style="width:25%">
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td data-title="Status" *ngIf="data.status ==='PAYEES_ADDED'">
+                  <div class="progress-box col-md-12">
+                    <div class="progress-title">PAYEES ADDED</div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar"
+                           aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                           style="width:25%">
+                      </div>
+                      <div class="progress-bar progress-bar-success" role="progressbar"
+                           aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                           style="width:25%">
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td data-title="Status" *ngIf="data.status ==='PROCESSING'">
+                  <div class="progress-box col-md-12">
+                    <div class="progress-title">PROCESSING</div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar"
+                           aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                           style="width:25%">
+                      </div>
+                      <div class="progress-bar progress-bar-success" role="progressbar"
+                           aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                           style="width:25%">
+                      </div>
+                      <div class="progress-bar progress-bar-success" role="progressbar"
+                           aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"
+                           style="width:25%">
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td data-title="Status" *ngIf="data.status ==='SETTLED'">
+                  <div class="progress-box col-md-12">
+                    <div class="progress-title">SETTLED</div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success progress-bar-full"
+                           role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                           aria-valuemax="100" style="width:100%">
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td data-title="Status" *ngIf="data.status ==='CANCELED'">
+                  <a>CANCELED</a>
+                </td>
+
+              </tr>
+              </tbody>
+
+            </table>
+
+            <div class="row pagination-container no-margin">
+              <div class="col-lg-6 col-md-6 no-padding">
+                <div class="pull-left pagination-detail">
+                  <span class="pagination-info">Show</span>
+                  <span class="page-list">
+                        <span class="pagination-info">Show</span>
+                        <span class="page-list">
+                          <span class="btn-group dropup">
+                            <select class="form-control" (ngModelChange)="onPageSizeChange($event)"
+                                    [(ngModel)]="pageSize">
+                                <option [ngValue]="i" *ngFor="let i of [12,24,36,48]">{{i}}</option>
+                            </select>
+                          </span> records/page, <span class="theme-color">{{totalSize}}</span> records in total
+                      </span>
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 no-padding">
+                <div class="pull-right pagination-list">
+                  <pagination-controls
+                    (pageChange)="pageChanged($event)"
+                    maxSize="9"
+                    directionLinks="true"
+                    autoHide="false"
+                    previousLabel="Previous"
+                    nextLabel="Next"
+                    screenReaderPaginationLabel="Pagination"
+                    screenReaderPageLabel="page"
+                    screenReaderCurrentLabel="You're on page">
+                  </pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,13 @@
+<div class="help-block" *ngIf="control.touched">
+  <span class="text-danger" *ngIf="control.hasError('required')">Field is required</span>
+  <span class="text-danger" *ngIf="control.hasError('email')">The email is invalid</span>
+  <span class="text-danger" *ngIf="control.hasError('minlength')">The field is too short</span>
+  <span class="text-danger" *ngIf="control.hasError('maxlength')">Maximum of 35 characters</span>
+  <span class="text-danger" *ngIf="control.hasError('commaError')">Comma should not contained</span>
+  <span class="text-danger" *ngIf="control.hasError('customError')">This field should only contains letters/numbers and / . # -.</span>
+  <span class="text-danger" *ngIf="control.hasError('numberLetterOnlyError')">This field should only contains letters and numbers</span>
+  <span class="text-danger" *ngIf="control.hasError('numberLetterSpace')">This field should only contains letters/numbers/spaces </span>
+  <span class="text-danger" *ngIf="control.hasError('customError')">This field should only contains only letters/numbers and / .  # - </span>
+  <span class="text-danger" *ngIf="control.hasError('matchOther')">The repeat password is not match.</span>
+  <span class="text-danger" *ngIf="control.hasError('clearingCodeRequiredError')">clearingCodeRequiredError Error</span>
+</div>

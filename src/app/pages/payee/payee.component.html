@@ -1,0 +1,313 @@
+<div class="container-fluid common-container" cg-busy="Ctrl.myPromise">
+    <div class="row rate-converter-row common-section">
+
+        <!--<button class="btn btn-prim" ng-click="connect()"> Connect</button>-->
+        <!--<button class="btn btn-prim" ng-click="disconnect()"> Disconnect</button>-->
+
+
+        <div class="col-lg-12 col-md-12  col-sm-12">
+            <h3 class="theme-color" style="margin-bottom: 50px; ">Hi Ctrl.user.name</h3>
+            <h4 class="title theme-color">Payee</h4>
+            <hr class="title-bottom-line">
+
+            <div class="fx-rate" ng-if="!Ctrl.currentRatePair.isCurrencyReversed">
+                <!--<span>Ctrl.currentRatePair.buyPrice | number : 4</span>&nbsp;<span>Ctrl.currentRatePair.buyCurrency</span> =-->
+                <!--<span>Ctrl.currentRatePair.sellPrice | number : 4</span>&nbsp;<span>Ctrl.currentRatePair.sellCurrency</span>&nbsp;-->
+
+                <!--<span>1</span>&nbsp;<span>Ctrl.buy.currency</span> = <span>Ctrl.currentRate | number : 4 </span>&nbsp;<span>Ctrl.sell.currency</span>&nbsp;<span>-->
+                <!--( buy rate )</span>-->
+
+                <span>1</span>&nbsp;<span>Ctrl.currentRatePair.rate.buyCurrency</span> = <span>Ctrl.currentRatePair.rate.buyPrice | number : 4</span>&nbsp;<span>Ctrl.currentRatePair.rate.sellCurrency</span>&nbsp;<span>
+                ( buy rate )</span>
+
+            </div>
+
+            <div class="fx-rate" ng-if="Ctrl.currentRatePair.isCurrencyReversed">
+                <span>1</span>&nbsp;<span>Ctrl.currentRatePair.rate.buyCurrency</span> = <span>Ctrl.currentRatePair.rate.sellPrice | number : 4</span>&nbsp;<span>Ctrl.currentRatePair.rate.sellCurrency</span>&nbsp;<span>
+                ( sell rate )</span>
+            </div>
+
+            <form class="common-form" name="bookDealForm" id="bookDealForm" novalidate>
+                <div class="row converter-row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group buy-currency-item">
+                        <label for="buyCurrencyBasic">Buy currency / amount</label>
+                        <br>
+                        <select id="buyCurrencyBasic"
+                                name="buyCurrencyBasic"
+                                ng-model="Ctrl.buy.currency"
+                                ng-change="Ctrl.onBuyCurrencyChanged(Ctrl.buy.currency)"
+                                class="select-control converter-select"
+                                ng-options="c for c in Ctrl.buyCurrencyOptions">
+                            <!-- <option value="NZD - New Zealand Dollar">NZD - New Zealand Dollar</option>
+                            <option value="USD - US Dollar">USD - US Dollar</option> -->
+                        </select>
+
+                        <input type="text"
+                               id="buyAmountBasic"
+                               ng-model="Ctrl.buy.amount"
+                               name="buyAmountBasic"
+                               class="float-right converter-input"
+                               ng-change="Ctrl.onBuyAmountChanged()"
+                               required>
+                        <div class="help-block" ng-messages="bookDealForm.buyAmountBasic.$error"
+                             ng-show="bookDealForm.buyAmountBasic.$touched">
+                            <div ng-messages-include="src/templates/messages.html"></div>
+                        </div>
+                    </div>
+
+                    <i class="fa fa-exchange theme-color exchange-icon" aria-hidden="true"></i>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+                        <label for="sellCurrencyBasic">Sell currency / amount</label>
+                        <br>
+                        <select id="sellCurrencyBasic"
+                                name="sellCurrencyBasic"
+                                ng-model="Ctrl.sell.currency"
+                                ng-options="c for c in Ctrl.sellCurrencyOptions"
+                                ng-change="Ctrl.onSellCurrencyChanged(Ctrl.sell.currency | number : 4)"
+                                class="select-control converter-select">
+                        </select>
+                        <input type="text"
+                               id="sellAmountBasic"
+                               ng-model='Ctrl.sell.amount'
+                               name="sellAmountBasic"
+                               class="float-right converter-input"
+                               ng-change="Ctrl.onSellAmountChanged()"
+                               required>
+                        <div class="help-block" ng-messages="bookDealForm.sellAmountBasic.$error"
+                             ng-show="bookDealForm.sellAmountBasic.$touched">
+                            <div ng-messages-include="src/templates/messages.html"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!--Ctrl.data | json}-->
+
+                <input type="hidden" id="rate">
+
+                <p style="color: red;">Currently we only offer pricing from 8 am - 10 pm (NZ time).</p>
+
+                <div class="row">
+                    <div class="col-lg-2 col-md-2  col-sm-12  form-group form-buttons">
+                        <button ng-disabled="bookDealForm.$invalid || !Ctrl.offerPricing || !Ctrl.canTrade"
+                                ng-click="Ctrl.open()"
+                                type="button"
+                                class="btn"
+                                data-toggle="modal"
+                                id="spot-deal-confirm-btn">
+                            SUBMIT
+                        </button>
+
+
+                        <div class="modal fade spot-deal-confirm-window" id="spot-deal-confirm-window" tabindex="-1"
+                             role="dialog" aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span></button>
+                                        <h4 class="modal-title" id="gridSystemModalLabel">SPOT DEAL</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                                                <label for="rate">Bought rate</label>
+                                                <input type="text" id="rate" name="rate" readonly="">
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group buy-currency-item">
+                                                <label for="buyCurrency">Bought currency</label>
+                                                <input type="text" id="buyCurrency" name="buyCurrency" readonly="">
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                                                <label for="buyAmount">Amount</label>
+                                                <input type="text" id="buyAmount" name="buyAmount" readonly="">
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+                                                <label for="sellCurrency">Sold currency</label>
+                                                <input type="text" id="sellCurrency" name="sellCurrency" readonly="">
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                                                <label for="sellAmount">Amount</label>
+                                                <input type="text" id="sellAmount" name="sellAmount" readonly="">
+                                            </div>
+                                            <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn gray-btn" data-dismiss="modal">CLOSE</button>
+                                        <a class="btn" href="/collision/deal/basic">ACCEPT</a>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10  col-sm-12"></div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+
+    <div class="row rate-list-row common-section" cg-busy="Ctrl.customerRatesPromise">
+        <div class="col-lg-12 col-md-12  col-sm-12">
+            <h4 class="title theme-color">EXCHANGE RATE</h4>
+            <hr class="title-bottom-line">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a ui-sref="rate.add" class="panel-add"><span class="add-icon">+&nbsp;</span>ADD RATE</a>
+                </div>
+                <div class="panel-body">
+
+                    <div class="table-responsive spot-table-container spot-list-table-container" id="no-more-tables">
+                        <table class="table spot-table  table-hover">
+                            <thead>
+                            <tr>
+                                <th class="rate-list-table-th1" data-field="">CURRENCY</th>
+                                <th class="rate-list-table-th3" data-field="">BUY RATE</th>
+                                <th class="rate-list-table-th4" data-field="">SELL RATE</th>
+                                <th class="rate-list-table-th4" data-field="">DELETE</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr ng-repeat="rate in Ctrl.customerRates" class="spot-deal spot-edit clickable">
+                                <td data-title="CURRENCY">NZD</td>
+                                <td data-title="BUY RATE">rate.buyRate</td>
+                                <td data-title="SELL RATE">rate.sellRate</td>
+                                <td data-title="DELETE"><i
+                                        class="glyphicon glyphicon-remove theme-orange delete-icon deleteRate"
+                                        ng-click="Ctrl.removeCustomerRate(rate)"></i>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <!--<div class="table-responsive rate-table-container rate-list-table-container">-->
+                    <!--<table class="table rate-table  table-hover">-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                    <!--<th class="rate-list-table-th1" data-field="">CURRENCY</th>-->
+                    <!--<th class="rate-list-table-th3" data-field="">BUY RATE</th>-->
+                    <!--<th class="rate-list-table-th4" data-field="">SELL RATE</th>-->
+                    <!--<th class="rate-list-table-th4" data-field="">DELETE</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+
+                    <!--<tr ng-repeat="rate in Ctrl.customerRates">-->
+                    <!--<td>rate.buyCurrency/rate.sellCurrency</td>-->
+                    <!--<td>rate.buyRate | number: 4</td>-->
+                    <!--<td>rate.sellRate | number: 4</td>-->
+                    <!--<td><i class="glyphicon glyphicon-remove theme-orange delete-icon deleteRate"-->
+                    <!--ng-click="Ctrl.removeCustomerRate(rate)"></i>-->
+                    <!--</td>-->
+                    <!--</tr>-->
+
+                    <!--</tbody>-->
+                    <!--</table>-->
+                    <!--</div>-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="spotDealModal.html">
+    <div class="common-form" cg-busy="myPromise">
+        <div class="form-group form-buttons">
+            <div class="modal-header">
+                <button type="button" ng-click="cancel()" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">SPOT DEAL</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                        <!--<label for="rate">Rate</label>-->
+                        <br/>
+                        <div ng-if="!Ctrl.currentRatePair.isCurrencyReversed">
+                            <span>1</span>&nbsp;<span>Ctrl.currentRatePair.rate.buyCurrency</span> = <span>Ctrl.currentRatePair.rate.buyPrice | number : 4</span>&nbsp;<span>Ctrl.currentRatePair.rate.sellCurrency</span>&nbsp;<span>
+                ( buy rate )</span>
+                        </div>
+
+                        <div ng-if="Ctrl.currentRatePair.isCurrencyReversed">
+                            <span>1</span>&nbsp;<span>Ctrl.currentRatePair.rate.buyCurrency</span> = <span>Ctrl.currentRatePair.rate.sellPrice | number : 4</span>&nbsp;<span>Ctrl.currentRatePair.rate.sellCurrency</span>&nbsp;<span>
+                ( sell rate )</span>
+                        </div>
+
+                        <!-- <input type="text" id="rate" name="rate" readonly=""> -->
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group buy-currency-item">
+                        <label for="buyCurrency">Bought currency</label>
+                        <input ng-model="Ctrl.buy.currency" type="text" id="buyCurrency" name="buyCurrency" readonly="">
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                        <label for="buyAmount">Amount</label>
+                        <input type="text" id="buyAmount" name="buyAmount" value="Ctrl.buy.amount | number : 2"
+                               readonly="">
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group form-select-group sell-currency-item">
+                        <label for="sellCurrency">Sold currency</label>
+                        <input ng-model="Ctrl.sell.currency" type="text" id="sellCurrency" name="sellCurrency"
+                               readonly="">
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12 form-group">
+                        <label for="sellAmount">Amount</label>
+                        <input type="text" id="sellAmount" name="sellAmount" value="Ctrl.sell.amount | number : 2"
+                               readonly="">
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12"><p style="color: red;">error</p></div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="cancel()" class="btn gray-btn" data-dismiss="modal">CLOSE</button>
+                <a class="btn" ng-click="accept()">ACCEPT</a>
+            </div>
+        </div>
+    </div>
+
+</script>

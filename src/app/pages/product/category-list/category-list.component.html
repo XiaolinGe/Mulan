@@ -1,0 +1,14 @@
+<div class="left-sidebar col-lg-3 col-md-3 col-sm-3 col-xs-12">
+  <div class="item refine">
+    <a class="clear" href="">Clear All</a>
+    <h4 class="title uppercase">Refine by</h4>
+    <div class="altribute">
+      <div class="item" *ngFor="let data of categories | paginate: { itemsPerPage: pageSize,
+                                                      currentPage: pageNumber,
+                                                      totalItems: totalSize }">
+        <input id="category" type="checkbox" name="category" value="{{data.id}}">
+        <label class="checked" for="category">{{data.name}}</label>
+      </div>
+    </div>
+  </div>
+</div>
