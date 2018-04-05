@@ -6,5 +6,10 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:9999/',
-  rateApiUrl: 'http://localhost:9999/'
+  // apiUrl: 'http://api.mulanjewellery.co.nz/',
 };
+
+
+
+
+

@@ -20,16 +20,16 @@
 
               <div class="item">
                 <div class="clearfix">
-                  <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                    <li data-thumb="assets/img/products/ML1.jpeg">
-                      <img src="assets/img/products/ML1.jpeg" alt=""/>
+                  <ul id="image-gallery" class="gallery list-unstyled <!--cS-hidden-->">
+                    <li data-thumb="assets/img/products/p1_37.jpg">
+                      <img src="assets/img/products/p1_37.jpg" alt=""/>
                     </li>
-                    <li data-thumb="assets/img/products/ML2.jpg">
-                      <img src="assets/img/products/ML2.jpg" alt=""/>
+                   <!-- <li data-thumb="assets/img/products/p2.jpg">
+                      <img src="assets/img/products/p2.jpg" alt=""/>
                     </li>
-                    <li data-thumb="assets/img/products/ML3.jpg">
-                      <img src="assets/img/products/ML3.jpg" alt=""/>
-                    </li>
+                    <li data-thumb="assets/img/products/p3.jpg">
+                      <img src="assets/img/products/p3.jpg" alt=""/>
+                    </li>-->
 
                   </ul>
                 </div>
@@ -57,8 +57,8 @@
               </script>
             </div>
             <div class="content col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <h2 class="product-name">Aquamarine Toy Figures</h2>
-              <span class="price"><span class="old">$205.05</span> $102.35</span>
+              <h2 class="product-name">{{product.name}}</h2>
+              <span class="price"><span class="old">${{product.price}}</span> ${{product.specialPrice}}</span>
               <div class="star">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -66,39 +66,24 @@
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
               </div>
-              <p class="description">Coupling a blended linen construction with tailored style, the River
-                Island HR Jasper Blazer will imprint a touch of dapper charm into your wardrobe.</p>
+              <p class="description">{{product.description}}</p>
               <div class="color">
                 <form>
-
-                  <input id="brown" type="radio" value="brown" name="tab-group" checked="checked"/>
-                  <label class="brown" for="brown"></label>
-                  <input id="red" type="radio" value="red" name="tab-group"/>
-                  <label class="red" for="red"></label>
-                  <input id="green" type="radio" value="green" name="tab-group"/>
-                  <label class="green" for="green"></label>
-
-                  <label class="pos"><span>Color: </span><span class="brown"> Brown </span><span
-                    class="red"> Red </span><span class="green"> Green </span><span
-                    class="stars"> * </span></label>
-
+                  <label class="pos"><span>Color: </span><span class="brown"> </span><span
+                    class="stars"> * </span> {{product.color}}</label>
                 </form>
               </div>
               <div class="size">
                 <form>
 
-                  <input id="sizes" type="radio" value="sizes" name="tab-group" checked="checked"/>
-                  <label class="sizes" for="sizes"> S </label>
-                  <input id="sizexl" type="radio" value="sizexl" name="tab-group"/>
-                  <label class="sizexl" for="sizexl"> XL </label>
-                  <input id="sizem" type="radio" value="sizem" name="tab-group"/>
-                  <label class="sizem" for="sizem"> M </label>
-                  <input id="sizel" type="radio" value="sizel" name="tab-group"/>
-                  <label class="sizel" for="sizel"> L </label>
+                  <label class="pos"><span>Quantity: </span><span class="sizes">  </span>
+                    <span class="stars"> * </span>{{product.quantity}}
 
-                  <label class="pos"><span>Size: </span><span class="sizes"> S </span><span
-                    class="sizexl"> XL </span><span class="sizem"> M </span><span class="sizel"> L </span><span
-                    class="stars"> * </span></label>
+
+
+
+
+                  </label>
 
                 </form>
 

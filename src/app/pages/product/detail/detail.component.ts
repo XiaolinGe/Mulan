@@ -24,9 +24,9 @@ export class ProductDetailComponent implements OnInit {
   constructor(public productService: ProductService,
               public router: Router,
               public authenticationService: AuthenticationService,
-             ) {
+              private activatedRoute: ActivatedRoute) {
 
-
+    this.getProductId();
     this.config = {
       headers: {'Authorization': 'Bearer ' + this.authenticationService.token},
       addRemoveLinks: true,
@@ -36,10 +36,15 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.getProduct();
+
   }
 
-
+  getProductId() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.productId = params['id'];
+      this.getProduct();
+    });
+  }
 
   getProduct() {
     this.loading = true;
