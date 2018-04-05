@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9841f2b-a4cf-42f6-ab36-038dfadcc304" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/ListSlider1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/home1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/home2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p1.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p10.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p11.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p12.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p13.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p14.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p15.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p16.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p1_27.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p1_37.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p2.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p3.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p4.jpg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/assets/img/products/p9.jpg" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/login/login.component.html" afterPath="$PROJECT_DIR$/src/app/pages/login/login.component.html" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/product/detail/detail.component.html" afterPath="$PROJECT_DIR$/src/app/pages/product/detail/detail.component.html" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/product/detail/detail.component.ts" afterPath="$PROJECT_DIR$/src/app/pages/product/detail/detail.component.ts" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/product/list/list.component.html" afterPath="$PROJECT_DIR$/src/app/pages/product/list/list.component.html" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment-local.ts" afterPath="$PROJECT_DIR$/src/environments/environment-local.ts" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.dev-test.ts" afterPath="$PROJECT_DIR$/src/environments/environment.dev-test.ts" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.prod.ts" afterPath="$PROJECT_DIR$/src/environments/environment.prod.ts" />
-      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" afterPath="$PROJECT_DIR$/src/environments/environment.ts" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,11 +41,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="product" pinned="false" current-in-tab="true">
+      <file leaf-file-name="product" pinned="false" current-in-tab="false">
         <entry file="das://table:/7b61d2bf/95554a4c-af55-4aac-9ad2-d871e1b1e7ba/mulan.product">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -122,7 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>queryString</find>
       <find>preferentialpr</find>
       <find>trx</find>
       <find>startRealtimeRateByRecursion</find>
@@ -152,6 +136,7 @@
       <find>src=&quot;assets/img/products/ML1.jpeg&quot;</find>
       <find>jpg</find>
       <find>&lt;li data-thumb=&quot;assets/img/products/ML1.jpeg&quot;&gt;</find>
+      <find>collinson</find>
     </findStrings>
     <replaceStrings>
       <replace>src</replace>
@@ -181,9 +166,9 @@
     <dirStrings>
       <dir>$PROJECT_DIR$/src/app/theme</dir>
       <dir>$PROJECT_DIR$/website</dir>
-      <dir>$PROJECT_DIR$/src</dir>
       <dir>$PROJECT_DIR$/src/app/pages/product</dir>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -216,7 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/website/css/styles-05.css" />
         <option value="$PROJECT_DIR$/website/css/styles-05.less" />
         <option value="$PROJECT_DIR$/website/css/styles-06.css" />
         <option value="$PROJECT_DIR$/website/css/styles-06.less" />
@@ -267,6 +251,7 @@
         <option value="$PROJECT_DIR$/src/app/pages/login/login.component.html" />
         <option value="$PROJECT_DIR$/src/app/pages/product/list/list.component.html" />
         <option value="$PROJECT_DIR$/src/app/pages/product/detail/detail.component.html" />
+        <option value="$PROJECT_DIR$/src/index.html" />
       </list>
     </option>
   </component>
@@ -307,32 +292,6 @@
             <path>
               <item name="Mulan" type="b2602c69:ProjectViewProjectNode" />
               <item name="Mulan" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mulan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mulan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mulan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mulan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mulan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mulan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mulan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mulan" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-              <item name="products" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -506,12 +465,12 @@
       <workItem from="1517481113050" duration="682000" />
       <workItem from="1517715647285" duration="2582000" />
       <workItem from="1522740976894" duration="664000" />
-      <workItem from="1522920666414" duration="3462000" />
+      <workItem from="1522920666414" duration="3660000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84430000" />
+    <option name="totallyTimeSpent" value="84628000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -537,7 +496,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3054137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23687424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23687424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293124" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -615,13 +574,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/models/payer.model.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/models/category.model.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -967,6 +919,14 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
